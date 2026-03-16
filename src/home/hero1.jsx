@@ -1,0 +1,88 @@
+import Reveal from "../components/reveal";
+import { Link } from "react-router-dom";
+import useCmsPage from "../hooks/useCmsPage"
+import Skeleton from "../components/skeleton"
+
+export default function AGPNHeroCard() {
+
+  const {pageData, loading, error} = useCmsPage("home-2")
+      
+    if (loading) {
+        return <Skeleton/>
+    }
+          
+    if (error) {
+        return <p>{error}</p>
+    }
+        
+    const acf = pageData.acf
+
+  return (
+    <section className="bg-white">
+      <div className="mx-auto w-full max-w-6xl px-0 sm:px-4 py-0 sm:py-10">
+        
+        <div className="relative overflow-hidden rounded-none sm:rounded-2xl shadow-[0_22px_60px_rgba(0,0,0,0.12)] min-h-[600px]">
+
+          {/* Background Image */}
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+            alt="AGPN global digital careers"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-[#1F3164]/80" />
+
+          {/* Content */}
+          <div className="relative z-10 px-6 pt-24 pb-16 sm:px-12">
+
+            <Reveal animation="fade-left">
+              <p className="text-sm font-semibold text-white/90">
+                {acf.home_hero_title}
+              </p>
+            </Reveal>
+
+            <Reveal animation="slide-up" delay={100}>
+              <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight text-white">
+                {acf.home_hero_bridge}
+              </h1>
+            </Reveal>
+
+            <Reveal animation="fade-right" delay={200}>
+              <p className="mt-6 text-lg font-semibold text-white/90 max-w-[36ch]">
+                {acf.home_hero_welcome}
+              </p>
+            </Reveal>
+
+            <Reveal animation="fade-left" delay={300}>
+              <p className="mt-4 text-white/80 leading-relaxed max-w-[50ch]">
+                {acf.home_hero_agpn}
+              </p>
+            </Reveal>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Reveal animation="fade-right" delay={400}>
+                <Link
+                  to="/ecosystem"
+                  className="inline-flex items-center justify-center rounded-full bg-white text-[#1A2B6D] px-7 py-3 font-semibold shadow-md transition hover:brightness-110 active:scale-[0.99]"
+                >
+                  {acf.home_hero_explore_button}
+                </Link>
+              </Reveal>
+
+              <Reveal animation="fade-left" delay={480}>
+                <Link
+                  to="/getinvolved"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-white/70 px-7 py-3 font-semibold text-white transition hover:bg-white hover:text-[#1A2B6D]"
+                >
+                  {acf.home_hero_join_button}
+                </Link>
+              </Reveal>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

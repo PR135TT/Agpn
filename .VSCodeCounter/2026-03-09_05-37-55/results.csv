@@ -1,0 +1,95 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "XML", "PostCSS", "Markdown", "JSON", "HTML", "comment", "blank", "total"
+"c:\Users\HP\Documents\reactProjects\agpn\README.md", "Markdown", 0, 0, 0, 0, 38, 0, 0, 0, 33, 71
+"c:\Users\HP\Documents\reactProjects\agpn\package-lock.json", "JSON", 0, 0, 0, 0, 0, 17302, 0, 0, 1, 17303
+"c:\Users\HP\Documents\reactProjects\agpn\package.json", "JSON", 0, 0, 0, 0, 0, 46, 0, 0, 1, 47
+"c:\Users\HP\Documents\reactProjects\agpn\postcss.config.js", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\HP\Documents\reactProjects\agpn\public\index.html", "HTML", 0, 0, 0, 0, 0, 0, 20, 23, 1, 44
+"c:\Users\HP\Documents\reactProjects\agpn\public\manifest.json", "JSON", 0, 0, 0, 0, 0, 25, 0, 0, 1, 26
+"c:\Users\HP\Documents\reactProjects\agpn\public\netlify-form.html", "HTML", 0, 0, 0, 0, 0, 0, 15, 0, 1, 16
+"c:\Users\HP\Documents\reactProjects\agpn\src\App.css", "PostCSS", 0, 0, 0, 33, 0, 0, 0, 0, 6, 39
+"c:\Users\HP\Documents\reactProjects\agpn\src\App.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 4, 39
+"c:\Users\HP\Documents\reactProjects\agpn\src\App.test.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\belief.jsx", "JavaScript JSX", 0, 38, 0, 0, 0, 0, 0, 1, 8, 47
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\hero.jsx", "JavaScript JSX", 0, 47, 0, 0, 0, 0, 0, 7, 17, 71
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\whatWeDo.jsx", "JavaScript JSX", 0, 64, 0, 0, 0, 0, 0, 1, 8, 73
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\whereFrom.jsx", "JavaScript JSX", 0, 32, 0, 0, 0, 0, 0, 1, 8, 41
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\whoWeAre.jsx", "JavaScript JSX", 0, 37, 0, 0, 0, 0, 0, 1, 9, 47
+"c:\Users\HP\Documents\reactProjects\agpn\src\about\whyItMatters.jsx", "JavaScript JSX", 0, 29, 0, 0, 0, 0, 0, 1, 8, 38
+"c:\Users\HP\Documents\reactProjects\agpn\src\certificates\content.jsx", "JavaScript JSX", 0, 231, 0, 0, 0, 0, 0, 11, 30, 272
+"c:\Users\HP\Documents\reactProjects\agpn\src\certificates\hero.jsx", "JavaScript JSX", 0, 47, 0, 0, 0, 0, 0, 7, 15, 69
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\contact.jsx", "JavaScript JSX", 0, 44, 0, 0, 0, 0, 0, 2, 13, 59
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\contactForm.jsx", "JavaScript JSX", 0, 140, 0, 0, 0, 0, 0, 2, 17, 159
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\footer.jsx", "JavaScript JSX", 0, 158, 0, 0, 0, 0, 0, 4, 2, 164
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\header.jsx", "JavaScript JSX", 0, 80, 0, 0, 0, 0, 0, 5, 8, 93
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\pageTitle.jsx", "JavaScript JSX", 0, 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\reveal.jsx", "JavaScript JSX", 0, 40, 0, 0, 0, 0, 0, 0, 8, 48
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\scrollToTop.jsx", "JavaScript JSX", 0, 10, 0, 0, 0, 0, 0, 2, 4, 16
+"c:\Users\HP\Documents\reactProjects\agpn\src\components\useInView.js", "JavaScript", 20, 0, 0, 0, 0, 0, 0, 0, 6, 26
+"c:\Users\HP\Documents\reactProjects\agpn\src\contact\content.jsx", "JavaScript JSX", 0, 142, 0, 0, 0, 0, 0, 4, 15, 161
+"c:\Users\HP\Documents\reactProjects\agpn\src\contact\hero.jsx", "JavaScript JSX", 0, 45, 0, 0, 0, 0, 0, 6, 16, 67
+"c:\Users\HP\Documents\reactProjects\agpn\src\ecosystem\arms.jsx", "JavaScript JSX", 0, 124, 0, 0, 0, 0, 0, 7, 24, 155
+"c:\Users\HP\Documents\reactProjects\agpn\src\ecosystem\hero.jsx", "JavaScript JSX", 0, 38, 0, 0, 0, 0, 0, 6, 14, 58
+"c:\Users\HP\Documents\reactProjects\agpn\src\ecosystem\intro.jsx", "JavaScript JSX", 0, 39, 0, 0, 0, 0, 0, 0, 12, 51
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\hero.jsx", "JavaScript JSX", 0, 45, 0, 0, 0, 0, 0, 7, 15, 67
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\intro.jsx", "JavaScript JSX", 0, 61, 0, 0, 0, 0, 0, 0, 18, 79
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\partner.jsx", "JavaScript JSX", 0, 56, 0, 0, 0, 0, 0, 0, 15, 71
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\right.jsx", "JavaScript JSX", 0, 47, 0, 0, 0, 0, 0, 5, 9, 61
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\sponsor.jsx", "JavaScript JSX", 0, 76, 0, 0, 0, 0, 0, 2, 25, 103
+"c:\Users\HP\Documents\reactProjects\agpn\src\empowerment\sponsorForm.jsx", "JavaScript JSX", 0, 123, 0, 0, 0, 0, 0, 0, 33, 156
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\businessForm.jsx", "JavaScript JSX", 0, 123, 0, 0, 0, 0, 0, 12, 64, 199
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\businessOwners.jsx", "JavaScript JSX", 0, 60, 0, 0, 0, 0, 0, 1, 11, 72
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\hero.jsx", "JavaScript JSX", 0, 41, 0, 0, 0, 0, 0, 6, 15, 62
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\instructorForm.jsx", "JavaScript JSX", 0, 106, 0, 0, 0, 0, 0, 1, 37, 144
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\instructors.jsx", "JavaScript JSX", 0, 57, 0, 0, 0, 0, 0, 1, 11, 69
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\studentForm.jsx", "JavaScript JSX", 0, 160, 0, 0, 0, 0, 0, 14, 25, 199
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\students.jsx", "JavaScript JSX", 0, 51, 0, 0, 0, 0, 0, 1, 12, 64
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\youngTalent.jsx", "JavaScript JSX", 0, 90, 0, 0, 0, 0, 0, 1, 13, 104
+"c:\Users\HP\Documents\reactProjects\agpn\src\getInvolved\youngTalentForm.jsx", "JavaScript JSX", 0, 160, 0, 0, 0, 0, 0, 14, 25, 199
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\built.jsx", "JavaScript JSX", 0, 86, 0, 0, 0, 0, 0, 3, 19, 108
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\featureCard.jsx", "JavaScript JSX", 0, 46, 0, 0, 0, 0, 0, 4, 9, 59
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\hero.jsx", "JavaScript JSX", 0, 97, 0, 0, 0, 0, 0, 2, 9, 108
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\hero1.jsx", "JavaScript JSX", 0, 69, 0, 0, 0, 0, 0, 3, 18, 90
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\marquee.jsx", "JavaScript JSX", 0, 60, 0, 0, 0, 0, 0, 2, 8, 70
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\marqueeForm.jsx", "JavaScript JSX", 0, 90, 0, 0, 0, 0, 0, 6, 18, 114
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\pathways.jsx", "JavaScript JSX", 0, 45, 0, 0, 0, 0, 0, 2, 7, 54
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\serve.jsx", "JavaScript JSX", 0, 196, 0, 0, 0, 0, 0, 2, 14, 212
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\statsSection.jsx", "JavaScript JSX", 0, 51, 0, 0, 0, 0, 0, 4, 6, 61
+"c:\Users\HP\Documents\reactProjects\agpn\src\home\whatWeDo.jsx", "JavaScript JSX", 0, 74, 0, 0, 0, 0, 0, 4, 16, 94
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\approach.jsx", "JavaScript JSX", 0, 69, 0, 0, 0, 0, 0, 4, 11, 84
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\chooseAgpn.jsx", "JavaScript JSX", 0, 77, 0, 0, 0, 0, 0, 2, 12, 91
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\goals.jsx", "JavaScript JSX", 0, 39, 0, 0, 0, 0, 0, 0, 8, 47
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\hero.jsx", "JavaScript JSX", 0, 94, 0, 0, 0, 0, 0, 6, 15, 115
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\info.jsx", "JavaScript JSX", 0, 66, 0, 0, 0, 0, 0, 0, 10, 76
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\join.jsx", "JavaScript JSX", 0, 93, 0, 0, 0, 0, 0, 4, 13, 110
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\serve.jsx", "JavaScript JSX", 0, 98, 0, 0, 0, 0, 0, 5, 12, 115
+"c:\Users\HP\Documents\reactProjects\agpn\src\homepage\vision.jsx", "JavaScript JSX", 0, 70, 0, 0, 0, 0, 0, 6, 14, 90
+"c:\Users\HP\Documents\reactProjects\agpn\src\hooks\useCmsPage.js", "JavaScript", 38, 0, 0, 0, 0, 0, 0, 1, 9, 48
+"c:\Users\HP\Documents\reactProjects\agpn\src\index.css", "PostCSS", 0, 0, 0, 16, 0, 0, 0, 0, 3, 19
+"c:\Users\HP\Documents\reactProjects\agpn\src\index.js", "JavaScript", 12, 0, 0, 0, 0, 0, 0, 3, 3, 18
+"c:\Users\HP\Documents\reactProjects\agpn\src\insights\blog.jsx", "JavaScript JSX", 0, 57, 0, 0, 0, 0, 0, 1, 9, 67
+"c:\Users\HP\Documents\reactProjects\agpn\src\insights\featured.jsx", "JavaScript JSX", 0, 100, 0, 0, 0, 0, 0, 1, 10, 111
+"c:\Users\HP\Documents\reactProjects\agpn\src\insights\hero.jsx", "JavaScript JSX", 0, 42, 0, 0, 0, 0, 0, 6, 14, 62
+"c:\Users\HP\Documents\reactProjects\agpn\src\lib\cms.js", "JavaScript", 29, 0, 0, 0, 0, 0, 0, 0, 10, 39
+"c:\Users\HP\Documents\reactProjects\agpn\src\logo.svg", "XML", 0, 0, 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\about.jsx", "JavaScript JSX", 0, 28, 0, 0, 0, 0, 0, 0, 4, 32
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\certificates.jsx", "JavaScript JSX", 0, 20, 0, 0, 0, 0, 0, 0, 4, 24
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\contact.jsx", "JavaScript JSX", 0, 18, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\ecosystem.jsx", "JavaScript JSX", 0, 22, 0, 0, 0, 0, 0, 0, 4, 26
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\empowerment.jsx", "JavaScript JSX", 0, 26, 0, 0, 0, 0, 0, 0, 4, 30
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\getInvolved.jsx", "JavaScript JSX", 0, 26, 0, 0, 0, 0, 0, 0, 4, 30
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\home.jsx", "JavaScript JSX", 0, 22, 0, 0, 0, 0, 0, 0, 1, 23
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\homePage.jsx", "JavaScript JSX", 0, 34, 0, 0, 0, 0, 0, 0, 2, 36
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\insights.jsx", "JavaScript JSX", 0, 36, 0, 0, 0, 0, 0, 1, 9, 46
+"c:\Users\HP\Documents\reactProjects\agpn\src\pages\referEarn.jsx", "JavaScript JSX", 0, 32, 0, 0, 0, 0, 0, 0, 4, 36
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\earnings.jsx", "JavaScript JSX", 0, 42, 0, 0, 0, 0, 0, 1, 12, 55
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\eligible.jsx", "JavaScript JSX", 0, 57, 0, 0, 0, 0, 0, 4, 11, 72
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\hero.jsx", "JavaScript JSX", 0, 44, 0, 0, 0, 0, 0, 6, 13, 63
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\howItWorks.jsx", "JavaScript JSX", 0, 33, 0, 0, 0, 0, 0, 1, 10, 44
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\intro.jsx", "JavaScript JSX", 0, 71, 0, 0, 0, 0, 0, 1, 15, 87
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\notes.jsx", "JavaScript JSX", 0, 57, 0, 0, 0, 0, 0, 5, 11, 73
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\participate.jsx", "JavaScript JSX", 0, 38, 0, 0, 0, 0, 0, 5, 13, 56
+"c:\Users\HP\Documents\reactProjects\agpn\src\referEarn\whatYouCanRefer.jsx", "JavaScript JSX", 0, 56, 0, 0, 0, 0, 0, 1, 17, 74
+"c:\Users\HP\Documents\reactProjects\agpn\src\reportWebVitals.js", "JavaScript", 12, 0, 0, 0, 0, 0, 0, 0, 2, 14
+"c:\Users\HP\Documents\reactProjects\agpn\src\setupTests.js", "JavaScript", 1, 0, 0, 0, 0, 0, 0, 4, 1, 6
+"c:\Users\HP\Documents\reactProjects\agpn\tailwind.config.js", "JavaScript", 17, 0, 0, 0, 0, 0, 0, 1, 1, 19
+"Total", "-", 177, 4931, 1, 49, 38, 17373, 35, 257, 1047, 23908
