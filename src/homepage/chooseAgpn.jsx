@@ -1,46 +1,27 @@
 import Reveal from "../components/reveal";
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function WhyChooseAGPN() {
-
-    const {pageData, loading, error} = useCmsPage("main-home")
-          
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
 
   const items = [
     {
       no: "01",
-      title: acf.choose_card1_title,
-      text:
-        acf.choose_card1_description,
+      title: "MARKET-VALIDATED SKILLS",
+      text: "We equip young talent with frameworks that have delivered measurable revenue outcomes through our parent company, CBM Sales & Biz Solution. Every skill is grounded in real market execution",
     },
     {
       no: "02",
-      title: acf.choose_card2_title,
-      text:
-        acf.choose_card1_description,
+      title: "RADICAL HONESTY",
+      text: "We are honest about what we can and cannot do. We do not create jobs — we bridge talent to opportunity. We do not guarantee outcomes — we provide structured tools and pathways.",
     },
     {
       no: "03",
-      title: acf.choose_card3_title,
-      text:
-        acf.choose_card1_description,
+      title: "COMPLETE ECOSYSTEM",
+      text: "We do not just equip young talent with digital skills — we connect them to structured career pathways, international education guidance, business growth systems, and sponsorship opportunities within one ecosystem.",
     },
     {
       no: "04",
-      title: acf.choose_card4_title,
-      text:
-        acf.choose_card1_description,
+      title: "GLOBAL ACCESS DEVELOPMENT",
+      text: "We are building structured relationships with universities, employers, and sponsors worldwide to create verified pathways from Nigeria to global opportunities.",
     },
   ];
 
@@ -51,16 +32,13 @@ export default function WhyChooseAGPN() {
         <Reveal animation="slide-up">
           <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
             <span className="h-[2px] w-8 bg-[#1F3164]" />
-            {acf.choose_heading}
+            WHAT MAKES AGPN DIFFERENT
           </div>
 
           <h2 className="mt-3 text-3xl font-extrabold text-[#1A2B6D]">
-            {acf.choose_title}
+            Why Choose AGPN
           </h2>
 
-          <p className="mt-3 text-[#0B1020]/70 max-w-2xl leading-relaxed">
-            {acf.choose_description}
-          </p>
         </Reveal>
 
         {/* Cards */}

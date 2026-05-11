@@ -1,20 +1,7 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
+
 
 export default function Intro() {
-
-    const {pageData, loading, error} = useCmsPage("ecosystem")
-  
-    if (loading) {
-      return <Skeleton/>
-    }
-  
-    if (error) {
-      return <p>{error}</p>
-    }
-  
-    const acf = pageData.acf
 
   return (
     <Reveal>
@@ -22,31 +9,25 @@ export default function Intro() {
       <div className="max-w-5xl mx-auto">
 
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1A2B6D]">
-          {acf.intro_title}
+         THE 6 ARMS OF AGPN
         </h2>
 
         <p className="mt-4 text-[#0B1020]/80 leading-relaxed">
-          <span className="font-semibold text-[#1A2B6D]">
-            {acf.intro_subtitle}
-          </span>
+          A Proven System. A Continental Vision.
         </p>
 
         <p className="mt-4 text-[#0B1020]/80 leading-relaxed">
-          {acf.intro_description}
-        </p>
-
-        <p className="mt-4 text-[#0B1020]/80 leading-relaxed">
-          {acf.intro_description2}
+          AGPN operates through six strategic arms, each designed to remove a specific barrier to economic opportunity. Together, they form a complete ecosystem that enables young talent to Learn, Grow, and Earn.
         </p>
 
         <div className="mt-6 bg-white border border-black/10 rounded-lg p-5 shadow-sm">
           <p className="font-semibold text-[#1A2B6D]">
-            {acf.intro_model}
+            The Model:
           </p>
 
           <p className="text-[#0B1020]/80 mt-1">
-            {acf.intro_two_arms}
-            {acf.intro_four_arms}
+            Two arms we execute internally.
+            Four arms we connect externally.
           </p>
         </div>
 

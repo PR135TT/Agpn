@@ -1,20 +1,7 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function WhatWeDoSection() {
 
-  const {pageData, loading, error} = useCmsPage("home-2")
-          
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-
-    const acf = pageData.acf
   return (
     <section className="bg-white py-14">
       <div className="max-w-6xl mx-auto px-4">
@@ -28,7 +15,7 @@ export default function WhatWeDoSection() {
             <Reveal animation="slide-up">
               <div className="md:col-span-5 h-64 md:h-auto relative">
                 <img
-                  src="https://cms.agpnlimited.com/wp-content/uploads/2026/03/team-young-african-people-office-table-with-laptop_219728-4554.avif"
+                  src="https://img.freepik.com/premium-photo/team-young-african-people-office-table-with-laptops_219728-4514.jpg"
                   alt="Digital Workforce Development"
                   className="w-full h-full object-cover"
                 />
@@ -42,23 +29,23 @@ export default function WhatWeDoSection() {
 
             <Reveal animation="slide-up">
               <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-                {acf.wwd_title}
+                WHAT WE DO
               </h2>
               </Reveal>
 
               <Reveal animation="slide-up">
               <p className="mt-4 text-slate-700 leading-relaxed text-lg">
-                {acf.wwd_description}
+                AGPN operates as a complete, structured ecosystem designed to create real economic positioning:
               </p>
               </Reveal>
 
               <ul className="mt-6 space-y-4 text-slate-700">
                 {[
-                  acf.wwd_train,
-                  acf.wwd_connect,
-                  acf.wwd_support,
-                  acf.wwd_guide,
-                  acf.wwd_build,
+                  "Train talent in high-demand digital skills",
+                  "Connect trained professionals to paid client projects and structured job pathways",
+                  "Support businesses with proven digital growth systems",
+                  "Guide individuals toward international education pathways",
+                  "Build partnerships that expand workforce access across Africa",
                 ].map((text, index) => (
                   <Reveal
                     key={index}
@@ -76,10 +63,10 @@ export default function WhatWeDoSection() {
               <Reveal animation="slide-up">
               <div className="mt-8 border-t border-slate-200 pt-6">
                 <p className="text-sm font-semibold text-slate-800">
-                 {acf.wwd_guarantee}
+                 We do not guarantee outcomes.
                 </p>
                 <p className="text-sm text-slate-600 mt-1">
-                  {acf.wwd_we}
+                  We build readiness and bridge access.
                 </p>
               </div>
               </Reveal>

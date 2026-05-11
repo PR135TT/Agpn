@@ -1,21 +1,7 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Content() {
-
-        const {pageData, loading, error} = useCmsPage("certificates")
-      
-        if (loading) {
-          return <Skeleton/>
-        }
-      
-        if (error) {
-          return <p>{error}</p>
-        }
-      
-        const acf = pageData.acf
 
   return (
     <>
@@ -24,29 +10,29 @@ export default function Content() {
         <div className="max-w-5xl mx-auto">
           <Reveal animation="fade-right">
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-            {acf.about_title}
+            ABOUT THE AGPN CERTIFICATE
           </h2>
           </Reveal>
 
           <Reveal animation="fade-left">
           <p className="mt-4 text-[#0B1020]/80 leading-relaxed">
-            {acf.about_description}
+            The AGPN Certificate of Completion confirms that you have successfully completed a digital skills program and demonstrated practical competence.
           </p>
           </Reveal>
 
           <Reveal animation="fade-right">
           <div className="mt-6 bg-white border border-black/10 rounded-lg p-6 shadow-sm space-y-2">
-            <p className="font-semibold text-[#1A2B6D]">{acf.clarification_title}</p>
-            <p className="text-[#0B1020]/80">•{acf.clarification_text}</p>
-            <p className="text-[#0B1020]/80">•{acf.clarification_text2}</p>
-            <p className="text-[#0B1020]/80">•{acf.clarification_text3}</p>
-            <p className="text-[#0B1020]/80">•{acf.clarification_text4}</p>
+            <p className="font-semibold text-[#1A2B6D]">Important Clarifications</p>
+            <p className="text-[#0B1020]/80">•Issued by AGPN</p>
+            <p className="text-[#0B1020]/80">•Not a university degree</p>
+            <p className="text-[#0B1020]/80">•Not accredited by any academic institution</p>
+            <p className="text-[#0B1020]/80">•Confirms practical, skills-based learning</p>
           </div>
           </Reveal>
 
           <Reveal animation="slide-up">
           <p className="mt-4 text-[#0B1020]/80">
-            {acf.about_foot}
+            Your certificate signals capability, not academic status.
           </p>
           </Reveal>
         </div>
@@ -57,27 +43,27 @@ export default function Content() {
         <div className="max-w-5xl mx-auto">
           <Reveal animation="slide-up" delay={0}>
             <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-              {acf.value_maintitle}
+              THE VALUE OF YOUR AGPN CERTIFICATE
             </h2>
           </Reveal>
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
-                title: acf.value_title,
-                text: acf.value_description,
+                title: "Practical Validation",
+                text: "Demonstrates hands-on ability in high-demand digital skills.",
               },
               {
-                title: acf.value_title2,
-                text: acf.value_description2,
+                title: "Career Visibility",
+                text: "Strengthens your CV, LinkedIn profile, and portfolio when applying for roles or opportunities.",
               },
               {
-                title: acf.value_title3,
-                text: acf.value_description3,
+                title: "Professional Positioning",
+                text: "Shows commitment to learning, growth, and skill development.",
               },
               {
-                title: acf.value_title4,
-                text: acf.value_description4,
+                title: "Community Recognition",
+                text: "Confirms your status within AGPN's alumni and talent ecosystem.",
               },
             ].map((x, idx) => (
               <Reveal key={x.title} animation="slide-up" delay={120 + idx * 120}>
@@ -96,35 +82,35 @@ export default function Content() {
         <div className="max-w-5xl mx-auto">
           <Reveal animation="fade-right">
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-            {acf.issue_main}
+            WHY WE ISSUE CERTIFICATES
           </h2>
           </Reveal>
 
           <div className="mt-6 space-y-4 text-[#0B1020]/80">
           <Reveal animation="fade-left">
             <p>
-              <span className="font-semibold text-[#1A2B6D]">{acf.issue_title}</span>{" "}
-                <br/>{acf.issue_text}
+              <span className="font-semibold text-[#1A2B6D]">We issue certificates to:</span>{" "}
+                <br/>Recognize structured completion
             </p>
             </Reveal>
             
             <Reveal animation="fade-right">
             <p>
-              <span className="font-semibold text-[#1A2B6D]">{acf.issue_title2}</span>{" "}
-                <br/>{acf.issue_text2}
+              <span className="font-semibold text-[#1A2B6D]">Validate applied competence</span>{" "}
+                <br/>Support professional positioning
             </p>
             </Reveal>
 
             <Reveal animation="fade-left">
             <p>
-              <span className="font-semibold text-[#1A2B6D]">{acf.issue_text3}</span>{" "}
+              <span className="font-semibold text-[#1A2B6D]">Strengthen trust with employers and partners</span>{" "}
             </p>
             </Reveal>
           </div>
 
           <Reveal animation="fade-right">
           <p className="mt-4 font-semibold text-[#1A2B6D]">
-            {acf.issue_text4}
+            Certificates support opportunity access — they do not guarantee employment or income outcomes.
           </p>
           </Reveal>
         </div>
@@ -134,17 +120,17 @@ export default function Content() {
       <section className="bg-white py-14 px-6">
         <div className="max-w-5xl mx-auto">
         <Reveal animation="fade-left">
-              <h2 className="text-2xl font-extrabold text-[#1A2B6D]">{acf.commitment_main}</h2>
+              <h2 className="text-2xl font-extrabold text-[#1A2B6D]">OUR COMMITMENT</h2>
           </Reveal>
           <div className="mt-6 space-y-3 text-[#0B1020]/80">
           <Reveal animation="fade-right">
-            <p>• <span className="font-semibold text-[#1A2B6D]">{acf.commitment_title}</span><br/>{acf.commitment_text}</p>
+            <p>• <span className="font-semibold text-[#1A2B6D]">Quality Control</span><br/>Certificates are earned through active participation and demonstrated understanding of program material.</p>
           </Reveal>
           <Reveal animation="fade-left">
-            <p>• <span className="font-semibold text-[#1A2B6D]">{acf.commitment_title2}</span><br/>{acf.commitment_text2}</p>
+            <p>• <span className="font-semibold text-[#1A2B6D]">Digital Accessibility</span><br/>Issued as a professional digital PDF, suitable for printing and online sharing.</p>
           </Reveal>
           <Reveal animation="fade-right">
-            <p>• <span className="font-semibold text-[#1A2B6D]">{acf.commitment_title3}</span><br/>{acf.commitment_text3}</p>
+            <p>• <span className="font-semibold text-[#1A2B6D]">Alumni Access</span><br/>Includes continued access to AGPN alumni updates and ecosystem opportunities.</p>
           </Reveal>
           </div>
         </div>
@@ -155,31 +141,31 @@ export default function Content() {
         <div className="max-w-5xl mx-auto bg-white border border-black/10 rounded-lg p-6 shadow-sm">
           <Reveal animation="slide-up">
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-            {acf.promise_main}
+            WHAT WE DO NOT PROMISE
           </h2>
           </Reveal>
 
           <div className="mt-4 space-y-2 text-[#0B1020]/80">
           <Reveal animation="fade-right">
-            <p>• {acf.promise_text}</p>
+            <p>• Academic equivalence</p>
           </Reveal>
          <Reveal animation="fade-left">
-            <p>• {acf.promise_text2}</p>
+            <p>• Government accreditation</p>
           </Reveal>
           <Reveal animation="fade-right">
-            <p>• {acf.promise_text3}</p>
+            <p>• Automatic employment</p>
           </Reveal>
           <Reveal animation="fade-left">
-            <p>• {acf.promise_text4}</p> 
+            <p>• Guaranteed income</p> 
           </Reveal>
           <Reveal animation="fade-right">
-            <p>• {acf.promise_text5}</p>
+            <p>• Credit transfer into academic institutions</p>
           </Reveal>
           </div>
 
           <Reveal animation="fade-left">
           <p className="mt-4 text-[#0B1020]/80">
-            {acf.promise_text6}
+            Opportunities depend on individual effort, readiness, and market conditions.
           </p>
           </Reveal>
         </div>
@@ -213,22 +199,22 @@ export default function Content() {
         <div className="max-w-5xl mx-auto bg-white border border-black/10 rounded-lg p-6 shadow-sm">
           <Reveal animation="slide-up">
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-            {acf.participants_main}
+            WHAT PARTICIPANTS RECEIVE
           </h2>
           </Reveal>
 
           <div className="mt-6 space-y-3 text-[#0B1020]/80">
           <Reveal animation="fade-right">
-            <p>• {acf.participants_text}</p>
+            <p>• AGPN Certificate of Completion</p>
           </Reveal>
           <Reveal animation="fade-left">
-            <p>• {acf.participants_text2}</p>
+            <p>• Digital Recognition Badge</p>
           </Reveal>
           <Reveal animation="fade-right">
-            <p>• {acf.participants_text3}</p>
+            <p>• Lifetime Alumni Status</p>
           </Reveal>
           <Reveal animation="fade-left">
-            <p>• {acf.participants_text4}</p>
+            <p>• Continued ecosystem access</p>
           </Reveal>
           </div>
         </div>

@@ -1,27 +1,12 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Right() {
 
-    const {pageData, loading, error} = useCmsPage("empowerment")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const lines = [
-    {text:acf.right_text, animation:"slide-up"},
-    {text:acf.right_text2, animation:"slide-up"},
-    {text:acf.right_text3, animation:"slide-up"},
-    {text:acf.right_text4, animation:"slide-up"},
-    {text:acf.right_text4, animation:"slide-up"},
+    {text: "We build infrastructure that scales people.", animation:"slide-up"},
+    {text: "Sponsors enable access.", animation:"slide-up"},
+    {text: "Partners connect to talent.", animation:"slide-up"},
+    {text: "Young people gain skills and reach.", animation:"slide-up"},
   ];
   return (
     <section className="bg-white px-4 py-12">
@@ -33,12 +18,12 @@ export default function Right() {
         <Reveal animation="slide-up">
           {/* Eyebrow */}
           <p className="text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
-            {acf.right_title}
+            EMPOWERMENT, DONE RIGHT
           </p>
 
           {/* Heading */}
           <h2 className="mt-2 text-[22px] font-extrabold text-[#1A2B6D] leading-snug">
-            {acf.right_subtitle}
+            AGPN does not build programs in isolation.
           </h2>
           </Reveal>
 
@@ -62,7 +47,7 @@ export default function Right() {
           <Reveal animation="slide-up">
           <div className="mt-6 rounded-xl bg-[#222222] p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
             <p className="text-white text-[14px] font-extrabold leading-relaxed">
-              {acf.right_closing_text}
+              AGPN - Bridging Untapped Talent to Global Opportunity.
             </p>
           </div>
           </Reveal>

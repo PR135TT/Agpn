@@ -1,28 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-  const {pageData, loading, error} = useCmsPage("empowerment")
-
-  if (loading) {
-    return <Skeleton/>
-  }
-
-  if (error) {
-    return <p>{error}</p>
-  }
-
-  const acf = pageData.acf
-  const imageUrl = acf?.empowerment_hero_image
 
   return (
     <section className="relative min-h-[70vh] px-6 py-16 overflow-hidden">
 
       {/* Hero Image */}
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1600&q=80"
         alt="Confident African professionals collaborating with laptops"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -44,21 +29,21 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-right">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          {acf.hero_title}
+          EMPOWERMENT
         </h1>
         </Reveal>
 
         {/* tagline */}
         <Reveal animation="fade-left">
         <p className="mt-4 text-lg font-semibold text-white/95">
-          {acf.hero_subtitle}
+        AGPN Empowerment
         </p>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-right">
         <p className="mt-4 max-w-3xl mx-auto text-lg text-white/90 leading-relaxed">
-          {acf.hero_description}
+          AGPN is building structured human capital infrastructure by equipping young African talent with digital skills, access, and global pathways. Partner or sponsor to create measurable impact through workforce development.
         </p>
         </Reveal>
 

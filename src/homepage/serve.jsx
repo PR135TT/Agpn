@@ -1,50 +1,36 @@
 import Reveal from "../components/reveal"
 import { Link } from "react-router-dom";
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function WhoWeServe() {
 
-  const {pageData, loading, error} = useCmsPage("main-home")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const cards = [
     {
-      title: acf.serve_title1,
-      text: acf.serve_description1,
+      title: "Young Talent",
+      text: "Recent graduates, ambitious professionals, and driven individuals ready to master high-demand digital skills and access global opportunities",
       image:
         "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80",
       button: "Join First Cohort",
       link: "/getinvolved#young-talent",
     },
     {
-    title: acf.serve_title2,
-    text: acf.serve_description2,
+    title: "Aspiring Global Learners",
+    text: "Young people dreaming of international education who need guidance through university applications, admissions, and visa processes.",
     image:
             "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
     button: "Explore Study Abroad",
     link: "/getinvolved#students",
     },
     {
-      title: acf.serve_title3,
-      text: acf.serve_description3,
+      title: "Struggling Businesses",
+      text: "Entrepreneurs with great products but poor sales. Business owners ready to scale using proven frameworks that generate results.",
       image:
         "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
       button: "Book Consultation",
       link: "/getinvolved#business",
     },
     {
-      title: acf.serve_title4,
-      text: acf.serve_description4,
+      title: "Strategic Partners/Sponsors",
+      text: "Collaborate with Africa's most trusted human capital infrastructure to empower talent and expand global reach.",
       image:
         "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80",
       button: "Partner With Us",
@@ -57,12 +43,8 @@ export default function WhoWeServe() {
       <div className="mx-auto w-full max-w-[420px]">
         {/* Header */}
         <p className="text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
-          {acf.serve_title}
+          WHO WE SERVE
         </p>
-
-        <h2 className="mt-2 text-[20px] font-extrabold text-[#1A2B6D]">
-          {acf.serve_subtitle}
-        </h2>
 
         {/* Cards */}
           <div className="mt-5 grid grid-cols-1 gap-4">
@@ -106,7 +88,7 @@ export default function WhoWeServe() {
         <Reveal animaton="fade-left">
         <div className="mt-6 rounded-xl bg-[#222222] p-5">
           <p className="text-white font-semibold text-[13.5px] leading-relaxed">
-            {acf.serve_agpn}
+            AGPN
           </p>
         </div>
         </Reveal>

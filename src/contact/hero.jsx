@@ -1,21 +1,6 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-    const {pageData, loading, error} = useCmsPage("contact")
-  
-    if (loading) {
-      return <Skeleton/>
-    }
-  
-    if (error) {
-      return <p>{error}</p>
-    }
-  
-    const acf = pageData.acf
-    const imageUrl = acf?.contact_hero_image
 
   return (
 
@@ -23,7 +8,7 @@ export default function Hero() {
 
       {/* Hero Image */}
       <img
-        src={imageUrl ||"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
         alt="Professional team collaborating in a welcoming office environment"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -45,20 +30,20 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-left">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          {acf.contact_headline}
+          Let's Bridge Your Future
         </h1>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-right">
         <p className="mt-4 max-w-3xl text-lg mx-auto text-white/90 leading-relaxed">
-          {acf.contact_description}
+          We're here to help you take the next step.
         </p>
         </Reveal>
 
         <Reveal animation="fade-left">
         <p className="mt-3 text-white/80 text-lg">
-           <span className="font-semibold">{acf.contact_description2}</span>.
+           <span className="font-semibold">Reach out with questions about programs, partnerships, sponsorships, or general inquiries.</span>.
         </p>
         </Reveal>
 

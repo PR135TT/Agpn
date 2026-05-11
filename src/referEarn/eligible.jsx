@@ -1,27 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function CommunityContributorEligibility() {
 
-  const {pageData, loading, error} = useCmsPage("refer-and-earn")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const items = [
-    {text: acf.community_students, animation:"slide-up"},
-    {text: acf.community_young, animation:"slide-up"},
-    {text: acf.community_business, animation:"slide-up"},
-    {text: acf.community_professionals, animation:"slide-up"},
-    {text: acf.community_anyone, animation:"slide-up"},
+    {text: "✅ Students" , animation:"slide-up"},
+    {text: "✅ Young talents", animation:"slide-up"},
+    {text: "✅ Business owners", animation:"slide-up"},
+    {text: "✅ Professionals", animation:"slide-up"},
+    {text: "✅ Anyone willing to contribute responsibly", animation:"slide-up"},
   ];
 
   return (
@@ -31,12 +17,12 @@ export default function CommunityContributorEligibility() {
           
           {/* Eyebrow */}
           <p className="text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
-            {acf.community_title}
+            COMMUNITY CONTRIBUTOR
           </p>
 
           {/* Heading */}
           <h2 className="mt-2 text-[20px] font-extrabold text-[#1A2B6D] leading-snug">
-            {acf.community_who}
+            WHO CAN BECOME A COMMUNITY CONTRIBUTOR?
           </h2>
 
           {/* Grid list */}
@@ -62,7 +48,7 @@ export default function CommunityContributorEligibility() {
           <Reveal animation="slide-up">
           <div className="mt-5 rounded-xl bg-[#222222] p-5">
             <p className="text-white text-[13.5px] leading-relaxed font-semibold">
-              {acf.community_enroll}
+             Enrollment in an AGPN program is not required to participate.
             </p>
           </div>
           </Reveal>

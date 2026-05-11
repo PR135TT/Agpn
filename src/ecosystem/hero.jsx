@@ -1,28 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-    const {pageData, loading, error} = useCmsPage("ecosystem")
-  
-    if (loading) {
-      return <Skeleton/>
-    }
-  
-    if (error) {
-      return <p>{error}</p>
-    }
-  
-    const acf = pageData.acf
-    const imageUrl = acf?.ecosystem_hero_image
 
   return (
     <section className="relative w-screen min-h-[70vh] py-16 px-6 overflow-hidden">
 
       {/* Hero Image */}
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80"
         alt="Professionals collaborating in a modern digital workspace"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -44,12 +29,12 @@ export default function Hero() {
         <Reveal animation="fade-right">
         {/* headline */}
         <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold mb-4">
-          {acf.hero_headline}
+          AGPN ECOSYSTEM
         </h1>
 
         {/* description */}
         <p className="text-white/90 text-lg leading-relaxed max-w-4xl">
-          {acf.hero_description}
+          An overview of AGPN’s six-arm infrastructure designed to bridge untapped African talent to structured global opportunities through digital skills, career pathways, business growth systems, international education access, and strategic partnerships.
         </p>
         </Reveal>
 

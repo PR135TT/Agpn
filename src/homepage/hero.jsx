@@ -1,21 +1,7 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero(){
-
-  const {pageData, loading, error} = useCmsPage("main-home")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
     return (
         <>
@@ -31,20 +17,25 @@ export default function Hero(){
 
               <Reveal animation="fade-left">
               <h1 className="subtitle mt-4 text-center text-[28px] leading-[1.15] font-extrabold">
-               {acf.bridge_title}
+               Bridging Untapped Talent to Global Opportunity
               </h1>
               </Reveal>
 
               <Reveal animation="fade-right">
               <p className="description1 mt-3 text-center text-[15px] leading-relaxed text-white/85 whitespace-pre-line">
-                {acf.hero_description}
+                AGPN bridges untapped African talent to global opportunity through digital skills, structured career pathways, business growth systems, and international education guidance — built on validated ₦100M+ frameworks from CBM Sales & Biz Solution
               </p>
               </Reveal>
                {/* mini card */}
                <Reveal animation="fade-right">
               <div className="mt-5 rounded-xl border border-white/20 bg-white/10 p-4">
                 <p className="card text-[15px] font-semibold tracking-widest text-white/80 whitespace-pre-line">
-                  {acf.box_description}
+                  We are not a traditional school or training center. We are THE BRIDGE — a strategic ecosystem that transforms untapped human potential in emerging markets into high-value assets for the global digital economy.
+                  AGPN equips young talent with globally competitive, high-demand digital skills, connects them to jobs and international career opportunities, facilitates access to world-class universities, and helps struggling businesses scale through proven digital systems.
+                  Built on battle-tested frameworks developed by our parent company, CBM Sales & Biz Solution — where measurable revenue outcomes exceeding ₦100M were delivered across multiple sectors — our programs are designed to create economic transformation.
+                  One skilled individual.
+                  One thriving business.
+                  One structured opportunity at a time.
                 </p>
               </div>
               </Reveal>
@@ -56,7 +47,7 @@ export default function Hero(){
                   to="/ecosystem"
                   className="w-full block rounded-xl bg-[#1A2B6D] px-4 py-3 text-center font-semibold shadow-md active:scale-[0.99] transition"
                 >
-                  {acf.learn_button}
+                  Learn More
                 </Link>
               </Reveal>
 
@@ -66,7 +57,7 @@ export default function Hero(){
                   to="/getinvolved"
                   className="w-full block rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-center font-semibold text-white active:scale-[0.99] transition"
                 >
-                 {acf.apply_button}
+                 Apply Here
                 </Link>
               </Reveal>
 
@@ -78,7 +69,7 @@ export default function Hero(){
                     to="/referandearn"
                     className="block rounded-xl bg-white/10 px-4 py-3 text-center font-semibold text-white active:scale-[0.99] transition"
                   >
-                    {acf.refer_button}
+                    Refer & Earn
                   </Link>
                 </Reveal>
 
@@ -88,7 +79,7 @@ export default function Hero(){
                     to="/empowerment"
                     className="block rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-center font-semibold text-white active:scale-[0.99] transition"
                   >
-                   {acf.sponsor_button}
+                   Become a Sponsor
                   </Link>
                 </Reveal>
 

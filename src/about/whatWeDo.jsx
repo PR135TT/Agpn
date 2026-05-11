@@ -1,20 +1,6 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function WhatWeDo(){
-
-            const {pageData, loading, error} = useCmsPage("about")
-          
-            if (loading) {
-              return <Skeleton/>
-            }
-          
-            if (error) {
-              return <p>{error}</p>
-            }
-          
-            const acf = pageData.acf
 
     return (
         <section className="bg-white px-4 pb-10">
@@ -24,23 +10,23 @@ export default function WhatWeDo(){
             <Reveal animation="fade-left">
                 <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
                 <span className="h-[2px] w-6 bg-[#1F3164]" />
-                    {acf.whatwedo_maintitle}
+                    WHAT WE DO
                 </div>
             </Reveal>
     
                 <div className="mt-5 space-y-4">
                 {[
                     {
-                    k: acf.whatwedo_title,
-                    v: acf.whatwedo_description,
+                    k: "LEARN",
+                    v: "Master high-demand digital skills through frameworks that have delivered ₦100M+ in real-market results.",
                     },
                     {
-                    k: acf.whatwedo_title2,
-                    v: acf.whatwedo_description2,
+                    k: "GROW",
+                    v: "Build professional competence through guidance, portfolio development, and global exposure.",
                     },
                     {
-                    k: acf.whatwedo_title3,
-                    v: acf.whatwedo_description3,
+                    k: "EARN",
+                    v: "Access structured income participation through our referral system and bridge toward local and international professional pathways.",
                     },
                 ].map((x, index) => (
                     <Reveal
@@ -62,9 +48,10 @@ export default function WhatWeDo(){
     
                 <Reveal animation="slide-up">
                 <p className="mt-5 text-[14px] font-semibold text-[#1A2B6D]">
-                    {acf.whatwedo_text}<br/>
-                    {acf.whatwedo_text2}<br/>
-                    {acf.whatwedo_text3}
+                    Our Focus is Simple:<br/>
+                    Clarity<br/>
+                    Competence<br/>
+                    Global Relevance
                 </p>
                 </Reveal>
             </div>

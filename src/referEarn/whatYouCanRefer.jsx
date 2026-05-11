@@ -1,20 +1,6 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function WhatYouCanRefer(){
-
-  const {pageData, loading, error} = useCmsPage("refer-and-earn")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
     return (
         <section className="bg-white py-8 px-6">
@@ -23,11 +9,11 @@ export default function WhatYouCanRefer(){
             
                     <Reveal animation="fade-right">
                       <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-                        {acf.what_title}
+                        WHAT YOU CAN REFER (COMMISSION-BASED)
                       </h2>
             
                       <p className="mt-4 text-[#0B1020]/80">
-                        {acf.what_you}
+                        You earn commission when you refer people into paid AGPN offerings:
                       </p>
                       </Reveal>
             
@@ -35,18 +21,18 @@ export default function WhatYouCanRefer(){
             
                         <Reveal animation="fade-left">
                         <div className="border border-black/10 rounded-lg p-5">
-                          <p className="font-extrabold text-[#1A2B6D]">{acf.what_young_title}</p>
+                          <p className="font-extrabold text-[#1A2B6D]">✅ YOUNG TALENT</p>
                           <p className="mt-2 text-[#0B1020]/80">
-                            {acf.what_young_text}
+                            Individuals who enroll in AGPN's paid digital skills programs.
                           </p>
                         </div>
                         </Reveal>
             
                         <Reveal animation="fade-right">
                         <div className="border border-black/10 rounded-lg p-5">
-                          <p className="font-extrabold text-[#1A2B6D]">{acf.what_business_title}</p>
+                          <p className="font-extrabold text-[#1A2B6D]">✅ BUSINESS OWNERS</p>
                           <p className="mt-2 text-[#0B1020]/80">
-                            {acf.what_business_text}
+                            Business owners who subscribe to AGPN's paid sales and business growth services.
                           </p>
                         </div>
                         </Reveal>
@@ -55,15 +41,15 @@ export default function WhatYouCanRefer(){
             
                       <Reveal animation="fade-left">
                       <div className="mt-8 bg-[#222222] text-white rounded-lg p-5">
-                        <p className="font-extrabold">{acf.what_does_title}</p>
+                        <p className="font-extrabold">❌ WHAT DOES NOT ATTRACT COMMISSION</p>
             
                         <div className="mt-3 space-y-1 text-white/90">
-                          <p>• {acf.what_students}</p>
-                          <p>• {acf.what_instructor}</p>
+                          <p>• Students seeking study-abroad guidance</p>
+                          <p>• Instructors joining to facilitate programs</p>
                         </div>
             
                         <p className="mt-3 text-white/90">
-                          {acf.what_these}
+                          These pathways are free to join and do not attract referral commission.
                         </p>
                       </div>
                       </Reveal>

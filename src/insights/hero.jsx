@@ -1,21 +1,6 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
-
 
 export default function Hero() {
-
-  const {pageData, loading, error} = useCmsPage("insights")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <section className="relative min-h-[70vh] px-6 py-16 overflow-hidden">
@@ -44,14 +29,14 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-right">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          {acf.hero_title}
+          Knowledge That Bridges the Gap.
         </h1>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-left">
         <p className="mt-4 max-w-3xl mx-auto text-lg text-white/90 leading-relaxed">
-          {acf.hero_description}
+          Structured insights on digital skills, career pathways, workforce readiness, business growth, and global opportunity — grounded in real-world execution experience.
         </p>
         </Reveal>
 

@@ -1,23 +1,10 @@
 import Reveal from "../components/reveal"
 import TalentForm from "./youngTalentForm"
 import {useState} from "react"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 
 export default function Content() {
    const [showForm, setShowForm] = useState(false)
-  const {pageData, loading, error} = useCmsPage("get-involved")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <section className="bg-white py-14 px-6">
@@ -26,70 +13,70 @@ export default function Content() {
         <Reveal animation="fade-right">
         <div className="bg-white border border-black/10 rounded-lg p-6 shadow-sm">
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-           {acf.young_talent_title}
+           YOUNG TALENT
           </h2>
           <p className=" text-[#0B1020]/80 mt-1">
-            {acf.young_talent_description}
+            Gain practical digital skills and become globally competitive using validated execution frameworks.
           </p>
           <button onClick={() => setShowForm(true)}
            className="mt-4 bg-[#1A2B6D] text-white px-5 py-2 rounded-md font-semibold shadow-md active:scale-[0.99] transition">
-            {acf.young_talent_button_text}
+            Join as Young Talent
           </button>
           <div className="mt-6 space-y-4 text-[#0B1020]/80 leading-relaxed">
             <p>
-              {acf.young_talent_question}
+              Are you a graduate lacking the high-demand skills required to compete in today's digital economy?
             </p>
             <p>
-              {acf.young_talent_edu}
+              Education alone does not always translate into economic mobility. Many individuals remain qualified yet disconnected from structured opportunity.
             </p>
             <p className="font-semibold text-[#1A2B6D]">
-              {acf.young_talent_disconnect}
+              That disconnect is the Access Gap — and it is not your fault.
             </p>
 
             <p>
-              {acf.young_talent_equip}
+              AGPN equips you with practical, real-world digital competencies aligned with current market demand.
             </p>
           </div>
 
           <div className="mt-6">
             <p className="font-semibold text-[#1A2B6D] mb-3">
-              {acf.young_talent_skill_title}
+              High-Demand Skills We Teach:
             </p>
 
             <ul className="list-disc ml-6 space-y-2 text-[#0B1020]/80">
-              <li>{acf.young_talent_digital}</li>
-              <li>{acf.young_talent_social_media}</li>
-              <li>{acf.young_talent_content}</li>
-              <li>{acf.young_talent_lead}</li>
-              <li>{acf.young_talent_commerce}</li>
-              <li>{acf.young_talent_virtual}</li>
-              <li>{acf.young_talent_business}</li>
-              <li>{acf.young_talent_crm}</li>
-              <li>{acf.young_talent_analytics}</li>
+              <li>✅Digital Marketing — Performance Marketing & Paid Media Advertising</li>
+              <li>✅Social Media & Community Management</li>
+              <li>✅Content Strategy & Conversion Copywriting</li>
+              <li>✅Lead Generation & Sales Funnel Systems</li>
+              <li>✅E-Commerce Marketing & Digital Sales Systems</li>
+              <li>✅Virtual Assistance & Remote Operations</li>
+              <li>✅Business Growth Strategy & Digital Positioning</li>
+              <li>✅CRM & Client Success Management</li>
+              <li>✅Analytics, Reporting & Performance Optimization</li>
             </ul>
           </div>
 
           <div className="mt-6">
-            <p className="font-semibold text-[#1A2B6D] mb-3">{acf.young_talent_what_title}</p>
+            <p className="font-semibold text-[#1A2B6D] mb-3">WHAT YOU WILL RECEIVE</p>
 
             <ul className="list-disc ml-6 space-y-2 text-[#0B1020]/80">
-              <li>{acf.young_talent_first}</li>
-              <li>{acf.young_talent_6}</li>
-              <li>{acf.young_talent_work}</li>
-              <li>{acf.young_talent_get}</li>
-              <li>{acf.young_talent_refer}</li>
-              <li>{acf.young_talent_port}</li>
-              <li>{acf.young_talent_interview}</li>
-              <li>{acf.young_talent_direct}</li>
-              <li>{acf.young_talent_official}</li>
-              <li>{acf.young_talent_lifetime}</li>
+              <li>First-class training delivered directly by the Founder and experienced instructors.</li>
+              <li>6–8 weeks intensive structured training</li>
+              <li>Work on real client projects</li>
+              <li>Get paid for client project delivery</li>
+              <li>Refer & Earn (Double income opportunity)</li>
+              <li>Portfolio building & personal branding</li>
+              <li>Interview & job preparation support</li>
+              <li>Direct access to employers & international opportunities</li>
+              <li>Official AGPN Certificate of Completion</li>
+              <li>Lifetime alumni access</li>
             </ul>
           </div>
 
-          <p className="mt-6 font-bold text-[#1A2B6D]">{acf.young_talent_investment}</p>
+          <p className="mt-6 font-bold text-[#1A2B6D]">Investment: ₦250,000</p>
 
           <p className="text-sm text-[#0B1020]/60 mt-1">
-            {acf.young_talent_result}
+            Results depend on individual effort, consistency, and market conditions.
           </p>
         </div>
         </Reveal>

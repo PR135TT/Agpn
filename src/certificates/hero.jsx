@@ -1,28 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-      const {pageData, loading, error} = useCmsPage("certificates")
-    
-      if (loading) {
-        return <Skeleton/>
-      }
-    
-      if (error) {
-        return <p>{error}</p>
-      }
-    
-      const acf = pageData.acf
-      const imageUrl = acf?.home_hero_image
 
   return (
     <section className="relative w-screen min-h-[70vh] px-6 py-16 overflow-hidden">
 
       {/* Hero Image */}
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80"
         alt="Professional receiving certificate in a modern learning environment"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -44,23 +29,24 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-left">
         <h1 className="mt-4 text-center text-4xl font-extrabold sm:text-5xl">
-          {acf.certificate_title}
+          AGPN CERTIFICATES & RECOGNITION
         </h1>
         </Reveal>
 
         {/* tagline */}
         <Reveal animation="fade-right">
         <p className="mt-4 text-center text-lg font-semibold text-white/95">
-          {acf.certificate_text}
+          Proof of Skill. Proof of Readiness.
         </p>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-left">
         <p className="text-center mt-6 max-w-3xl leading-relaxed text-white/90">
-          {acf.certificate_text2}
+          At AGPN, certificates are not academic titles.
+          They are evidence of structured, practical skill development.
           <br/>
-          {acf.certificate_text3}
+          Our certificates exist to confirm that a participant has completed a defined training program and demonstrated applied understanding of relevant digital competencies.
         </p>
         </Reveal>
 

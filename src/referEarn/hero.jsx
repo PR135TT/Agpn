@@ -1,21 +1,6 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
-
 
 export default function Hero() {
-
-  const {pageData, loading, error} = useCmsPage("refer-and-earn")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <section className="relative min-h-[70vh] px-6 py-16 overflow-hidden w-screen">
@@ -43,16 +28,17 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-left">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          {acf.refer_hero_title}
+          REFER AND EARN WITH AGPN
         </h1>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-right">
         <p className="mt-4 max-w-3xl mx-auto text-lg text-white/90 leading-relaxed">
-          {acf.refer_hero_subtitle} <br/>
-          {acf.refer_hero_subtitle2}<br/>
-          {acf.refer_hero_subtitle3}
+          AGPN is not built on hype. It is built on structure, participation, and measurable contribution. <br/>
+          We believe people should not only learn and grow — they should also have structured opportunities to earn within a professional ecosystem.
+          <br/>
+          That is what Refer & Earn represents.
         </p>
         </Reveal>
 

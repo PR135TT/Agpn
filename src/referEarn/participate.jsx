@@ -1,21 +1,7 @@
 import Reveal from "../components/reveal"
 import { Link } from "react-router-dom";
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function ReadyToParticipate() {
-
-  const {pageData, loading, error} = useCmsPage("refer-and-earn")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <Reveal animation="slide-up">
@@ -27,12 +13,12 @@ export default function ReadyToParticipate() {
           
           {/* Eyebrow */}
           <p className="text-[11px] font-semibold tracking-widest text-white/80">
-            {acf.ready_title}
+            READY TO PARTICIPATE?
           </p>
 
           {/* Description */}
           <p className="mt-3 text-[13.5px] text-white/90 leading-relaxed">
-            {acf.ready_subtitle}
+            If you want to contribute to AGPN's growth and earn based on results start here.
           </p>
 
           {/* CTA Button */}
@@ -40,12 +26,12 @@ export default function ReadyToParticipate() {
             to="/getinvolved"
             className="mt-6 inline-block w-full bg-white text-[#1A2B6D] font-semibold px-5 py-3 rounded-md hover:bg-gray-100 transition shadow-sm"
           >
-            👉{acf.ready_become}
+            👉Become an AGPN Community Contributor
           </Link>
 
           {/* Subtext */}
           <p className="mt-3 text-[12px] text-white/75">
-            {acf.ready_free}
+            (Free registration. Approval required.)
           </p>
 
         </div>

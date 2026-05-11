@@ -1,62 +1,47 @@
 // Featured.jsx
 import { Link } from "react-router-dom";
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
-
 
 export default function Featured() {
-
-  const {pageData, loading, error} = useCmsPage("insights")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   const featured = [
     {
       id: "frameworks-100m",
       heading:
-        acf.card1_title,
+        "How Proven Frameworks Generated ₦100M+ in Revenue — And What You Can Learn",
       preview:
-        acf.card1_description,
+        "A breakdown of structured digital systems developed through CBM Sales & Biz Solution and how they produced measurable market results. Practical lessons for entrepreneurs and digital professionals.",
     },
     {
       id: "digital-skills-vs-education",
-      heading: acf.card1_title,
+      heading: "Digital Skills vs Traditional Education: What the Market Actually Rewards",
       preview:
-        acf.card1_description,
+        "An honest look at how structured digital competence complements academic education and opens alternative income pathways for young professionals",
     },
     {
       id: "bridge-access-gap",
       heading:
-        acf.card1_title,
+        "5 Practical Ways to Bridge the Access Gap",
       preview:
-        acf.card1_description,
+        "Actionable steps to gain relevant digital skills, build positioning, and access structured opportunities through ecosystem-based growth.",
     },
     {
       id: "sponsorship-10k-impact",
-      heading: acf.card1_title,
+      heading: "How Structured Sponsorship Drives Measurable Impact",
       preview:
-        acf.card1_description,
+        "A transparent explanation of how sponsorship enables access to skills, workforce readiness, and long-term economic participation.",
     },
     {
       id: "study-abroad-truth",
-      heading: acf.card1_title,
+      heading: "What to Know Before Applying to Study Abroad",
       preview:
-        acf.card1_description,
+        "Realistic guidance on preparation, documentation, visa considerations, and structured planning for international education pathways.",
     },
     {
       id: "digital-marketing-training-fails",
-      heading: acf.card1_title,
+      heading: "Why Many Digital Training Programs Fail — And How to Avoid It",
       preview:
-        acf.card1_description,
+        "The difference between certificate-focused training and structured, market-aligned competence development.",
     },
   ];
 
@@ -66,11 +51,8 @@ export default function Featured() {
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
             <h2 className="text-3xl font-extrabold text-[#1A2B6D]">
-             {acf.featured_articles}
+             FEATURED ARTICLES
             </h2>
-            <p className="mt-2 text-[#0B1020]/70">
-              {acf.article_jump}
-            </p>
           </div>
         </div>
 

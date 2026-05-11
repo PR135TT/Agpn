@@ -1,38 +1,24 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/reveal";
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function JoinFirstCohort() {
 
-  const {pageData, loading, error} = useCmsPage("main-home")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const points = [
     {
-      title: acf.join_card_title1,
-      text: acf.join_card_description1,
+      title: "Master Practical Digital Skills",
+      text: "Learn the frameworks that translate directly into market value.",
     },
     {
-      title: acf.join_card_title2,
-      text: acf.join_card_description2,
+      title: "Build Globally Relevant Expertise",
+      text: "Develop expertise that commands respect in any economy.",
     },
     {
-      title: acf.join_card_title3,
-      text: acf.join_card_description3,
+      title: "Access Strategic Pathways",
+      text: "Connect to verified international education and professional opportunities.",
     },
     {
-      title: acf.join_card_title4,
-      text: acf.join_card_description4,
+      title: "Join a Purpose Driven Community",
+      text: "Be part of the most trusted human capital infrastructure in Nigeria.",
     },
   ];
 
@@ -44,14 +30,14 @@ export default function JoinFirstCohort() {
           {/* Eyebrow */}
           <Reveal animation="fade-left">
             <p className="text-[11px] font-semibold tracking-widest text-white/80">
-              {acf.join_title}
+              JOIN OUR FIRST COHORT
             </p>
           </Reveal>
 
           {/* Heading */}
           <Reveal animation="fade-right" delay={80}>
             <h2 className="mt-2 text-[22px] font-extrabold text-white leading-snug">
-              {acf.join_subtitle}
+              Be part of Something Historic
             </h2>
           </Reveal>
 
@@ -82,7 +68,7 @@ export default function JoinFirstCohort() {
                 to="/getinvolved"
                 className="w-full block text-center bg-white text-[#1A2B6D] font-semibold px-4 py-3 rounded-md hover:bg-gray-100 transition"
               >
-                {acf.get_button}
+                Get Involved
               </Link>
             </Reveal>
 
@@ -91,7 +77,7 @@ export default function JoinFirstCohort() {
                 to="/ecosystem"
                 className="w-full block text-center border border-white text-white font-semibold px-4 py-3 rounded-md hover:bg-white hover:text-[#1A2B6D] transition"
               >
-                {acf.learn_button}
+                Our Ecosystem
               </Link>
             </Reveal>
 
@@ -100,7 +86,7 @@ export default function JoinFirstCohort() {
                 to="/referandearn"
                 className="w-full block text-center bg-[#222222] text-white font-semibold px-4 py-3 rounded-md hover:bg-black transition"
               >
-                {acf.refer_button}
+                Refer and Earn
               </Link>
             </Reveal>
           </div>

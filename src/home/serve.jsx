@@ -1,46 +1,31 @@
 import Reveal from "../components/reveal"; 
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
-
 
 export default function WhoWeServeSection() {
 
-  const {pageData, loading, error} = useCmsPage("home-2")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const items = [
     {
-      title: acf.card_title,
-      desc: acf.card_description,
+      title: "Young Talent",
+      desc: "Graduates and professionals seeking practical digital skills and real global opportunities.",
       icon: <AbstractIcon1 />,
     },
     {
-      title: acf.card_title2,
-      desc: acf.card_description2,
+      title: "Employers & Companies",
+      desc: "Organizations looking for job-ready digital professionals trained on proven execution systems.",
       icon: <AbstractIcon2 />,
     },
     {
-      title: acf.card_title3,
-      desc: acf.card_description3,
+      title: "Business Owners",
+      desc: "Entrepreneurs who need scalable digital systems to grow sales and performance.",
       icon: <AbstractIcon3 />,
     },
     {
-      title: acf.card_title4,
-      desc: acf.card_description4,
+      title: "Students Seeking Global Education",
+      desc: "Individuals who want structured guidance for international study pathways.",
       icon: <AbstractIcon4 />,
     },
     {
-      title: acf.card_title5,
-      desc: acf.card_description5,
+      title: "Sponsors & Strategic Partners",
+      desc: "Institutions committed to workforce development and measurable impact.",
       icon: <AbstractIcon5 />,
     },
   ];
@@ -51,7 +36,7 @@ export default function WhoWeServeSection() {
           <div className="mb-8">
             <Reveal animation="slide-up">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1A2B6D]">
-              {acf.who_title}
+              WHO WE SERVE
             </h2>
             </Reveal>
             <Reveal animation="fade-left">

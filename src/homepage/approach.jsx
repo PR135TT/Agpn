@@ -1,36 +1,19 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function OurApproach() {
 
-  const {pageData, loading, error} = useCmsPage("main-home")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-
   const items = [
     {
-      title: acf.approach_learn_title,
-      text:
-        acf.approach_learn_description,
+      title: "LEARN",
+      text: "Master high-value digital skills using proven frameworks from our parent company that have generated measurable revenue outcomes in real markets.",
     },
     {
-      title: acf.approach_grow_title,
-      text:
-        acf.approach_grow_description,
+      title: "GROW",
+      text: "Build your portfolio with real projects. Develop your professional brand. Access our global network of opportunities and partners.",
     },
     {
-      title: acf.approach_earn_title,
-      text:
-        acf.approach_earn_description,
+      title: "EARN",
+      text: "Start earning while you learn through our structured referral system. Then connect to income-generating opportunities locally and globally.",
     },
   ];
 
@@ -42,14 +25,14 @@ export default function OurApproach() {
           {/* Eyebrow */}
           <Reveal animation="slide-up">
             <p className="text-[11px] font-semibold tracking-widest text-[#1A2B6D]">
-              {acf.approach_title}
+              OUR APPROACH
             </p>
           </Reveal>
 
           {/* Heading */}
           <Reveal animation="slide-up" delay={80}>
             <h2 className="mt-2 text-[20px] font-extrabold text-[#1A2B6D] leading-snug">
-              {acf.approach_subtitle}
+              Learn - Grow - Earn
             </h2>
           </Reveal>
 
@@ -73,7 +56,7 @@ export default function OurApproach() {
           <Reveal animation="slide-up" delay={items.length * 120}>
             <div className="mt-5 rounded-xl bg-[#222222] p-5 text-white shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
               <p className="text-[13.5px] font-semibold leading-relaxed text-white/95">
-                {acf.approach_why}
+                This is why AGPN was created: to create immediate economic impact while equipping young talent for long-term global success
               </p>
             </div>
           </Reveal>

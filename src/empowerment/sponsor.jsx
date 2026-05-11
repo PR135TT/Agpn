@@ -1,23 +1,10 @@
 import Reveal from "../components/reveal"
 import {useState} from "react"
 import SponsorForm from "./sponsorForm"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Sponsor() {
 
    const [showForm, setShowForm] = useState(false)
-   const {pageData, loading, error} = useCmsPage("empowerment")
-      
-if (loading) {
-    return <Skeleton/>
-}
-      
-if (error) {
-     return <p>{error}</p>
-}
-    
-const acf = pageData.acf
 
   return (
     <section className="bg-white py-14 px-6">
@@ -28,41 +15,41 @@ const acf = pageData.acf
         <div className="bg-white border border-black/10 rounded-lg p-6 shadow-sm">
 
           <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-            {acf.sponsor_title}
+            WHY SPONSOR AGPN
           </h2>
 
           <p className="mt-3 font-semibold text-[#0B1020]/80">
-            {acf.sponsor_subtitle}
+           Equip Talent. Expand Opportunity. Create Measurable Impact.
           </p>
 
           <div className="mt-6 space-y-4 text-[#0B1020]/80 leading-relaxed">
 
             <p>
-             {acf.sponsor_support}
+             Sponsor support at AGPN is used to reduce access barriers for high-potential young talents who lack financial resources to acquire structured digital skills.
             </p>
 
             <p className="font-semibold text-[#1A2B6D]">
-              {acf.sponsor_enable}
+              Sponsorship enables:
             </p>
 
             <ul className="list-disc ml-6 space-y-2">
-              <li>{acf.sponsor_access}</li>
-              <li>{acf.sponsor_learning}</li>
-              <li>{acf.sponsor_exposure}</li>
+              <li>Access to structured digital skills programs</li>
+              <li>* Learning tools and guided mentorship</li>
+              <li>Exposure to verified global pathways</li>
             </ul>
 
             <p className="font-semibold text-[#1A2B6D]">
-              {acf.sponsor_equip}
+              Once equipped, individuals become:
             </p>
 
             <ul className="list-disc ml-6 space-y-2">
-              <li>{acf.sponsor_global}</li>
-              <li>{acf.sponsor_remote}</li>
-              <li>{acf.sponsor_productive}</li>
+              <li>Globally competitive professionals</li>
+              <li>Remote contributors and digital specialists</li>
+              <li>Productive economic participants</li>
             </ul>
 
             <p>
-              {acf.sponsor_strength}
+              This strengthens communities and builds workforce capacity.
             </p>
 
           </div>

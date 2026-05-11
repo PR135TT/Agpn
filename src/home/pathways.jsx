@@ -1,31 +1,17 @@
 import { LuChevronsRight } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import Reveal from "../components/reveal"; 
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Pathways() {
 
-  const {pageData, loading, error} = useCmsPage("home-2")
-      
-  if (loading) {
-      return <Skeleton/>
-  }
-        
-  if (error) {
-      return <p>{error}</p>
-  }
-      
-  const acf = pageData.acf
-
   const links = [
-    { to: "/getinvolved", label:acf.pathways_text1},
-    { to: "/ecosystem#arm-two", label:acf.pathways_text2},
-    { to: "/ecosystem#arm-three", label:acf.pathways_text3},
-    { to: "/ecosytem#arm-five", label:acf.pathways_text4},
-    { to: "/empowerment", label:acf.pathways_text5},
-    { to: "/referandearn", label:acf.pathways_text6},
-    { to: "/certificates", label:acf.pathways_text7},
+    { to: "/getinvolved", label: "Build In-Demand Digital Capability"},
+    { to: "/ecosystem#arm-two", label: "Access Jobs & Remote Career Opportunities"},
+    { to: "/ecosystem#arm-three", label: "Explore Global Study & Scholarship Pathways"},
+    { to: "/ecosytem#arm-five", label: "Scale & Strengthen Your Business"},
+    { to: "/empowerment", label: "Earn Through Strategic Referrals"},
+    { to: "/referandearn", label: "Access Empowerment & Sponsorship Support"},
+    { to: "/certificates", label: "Earn Recognized Certifications & Credentials"},
   ];
 
   return (
@@ -33,7 +19,7 @@ export default function Pathways() {
       {/* Header can reveal too (optional) */}
       <Reveal animation="slide-up" delay={0}>
         <h1 className="border-b border-black px-5 pt-2 text-left text-2xl font-semibold text-[#1A2B6D]">
-          {acf.pathways_title}
+          CHOOSE YOUR GROWTH PATHWAY
         </h1>
       </Reveal>
 

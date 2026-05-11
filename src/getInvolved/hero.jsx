@@ -1,28 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-  const {pageData, loading, error} = useCmsPage("get-involved")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
-    const imageUrl = acf?.ecosystem_hero_image
 
   return (
     <section className="relative px-6 py-16 overflow-hidden">
       
       {/* Background Image */}
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"
         alt="AGPN collaboration"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -42,16 +27,17 @@ export default function Hero() {
 
         {/* headline */}
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          {acf.hero_title}
+          Get Involved with AGPN
         </h1>
 
         {/* description */}
         <p className="mt-4 max-w-3xl mx-auto text-white/90 leading-relaxed">
-          {acf.hero_description}
+          From Stagnation to Structured Global Opportunity — AGPN Is the Bridge.
+          This page is for those ready to take action: gain structured digital skills, access career pathways, explore international education options, grow a business, or contribute as an instructor.
         </p>
 
         <p className="mt-4 font-semibold text-white/95">
-          {acf.hero_scroll}
+          Scroll and choose your pathway.
         </p>
 
       </div>

@@ -1,21 +1,7 @@
 import Reveal from "../components/reveal"
 import {Link} from "react-router-dom"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function AGPNCardSection() {
-
-  const {pageData, loading, error} = useCmsPage("home-2")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <section className="bg-white py-12">
@@ -30,7 +16,7 @@ export default function AGPNCardSection() {
             <Reveal animation="slide-up">
             <div className="md:col-span-5 h-64 md:h-auto relative"> 
               <img
-                src="https://cms.agpnlimited.com/wp-content/uploads/2026/03/using-same-laptop-for-the-project-group-of-african-american-business-people-working-in-office-together-free-photo.jpg"
+                src="https://prolearn.ac.bw/wp-content/uploads/2023/10/Finance-Non-Finance-Managers1.jpg"
                 alt="AGPN Business Growth"
                 className="w-full h-full object-cover"
               />
@@ -43,27 +29,27 @@ export default function AGPNCardSection() {
 
                 <Reveal animation="slide-up">
               <h2 className="text-2xl font-extrabold text-[#1A2B6D]">
-                {acf.built_title}
+                BUILT ON REAL MARKET EXPERIENCE
               </h2>
               </Reveal>
 
               <Reveal animation="slide-up">
               <p className="mt-4 text-slate-700 leading-relaxed">
-                {acf.built_description}
+               AGPN is powered by the same proven frameworks from CBM Sales & Biz Solution that have generated over ₦100M in measurable results for businesses across Nigeria and beyond.
               </p>
               </Reveal>
 
               <Reveal animation="fade-left">
               <h3 className="mt-6 text-lg font-semibold tracking-widest text-[#1A2B6D]">
-                {acf.built_learn}
+                LEARN • GROW • EARN
               </h3>
               </Reveal>
 
               <Reveal animation="fade-right">
               <p className="mt-3 text-slate-700 leading-relaxed">
-                {acf.built_at}
+                At AGPN, you don’t just learn — you grow and earn.
                 <br />
-                {acf.built_ready}
+                Ready to position yourself for global relevance?
               </p>
               </Reveal>
 
@@ -71,7 +57,7 @@ export default function AGPNCardSection() {
                 <Reveal animation="fade-left">
                 <Link to ="getinvolved">
                 <button className="bg-[#1A2B6D] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:brightness-110 transition">
-                  {acf.built_apply_button}
+                  Apply Now
                 </button>
                 </Link>
                 </Reveal>
@@ -79,7 +65,7 @@ export default function AGPNCardSection() {
                 <Reveal animation="fade-right">
                 <Link to ="empowerment">
                 <button className="border-2 border-[#1A2B6D] text-[#1A2B6D] px-6 py-3 rounded-full font-semibold hover:bg-[#1A2B6D] hover:text-white transition">
-                  {acf.built_partner_button}
+                  Partner With Us
                 </button>
                 </Link>
                 </Reveal>
@@ -87,7 +73,7 @@ export default function AGPNCardSection() {
                 <Reveal animation="fade-left">
                 <Link to="referandearn">
                 <button className="border-2 border-[#1A2B6D] text-[#1A2B6D] px-6 py-3 rounded-full font-semibold hover:bg-[#1A2B6D] hover:text-white transition">
-                  {acf.built_refer_button}
+                  Refer & Earn
                 </button>
                 </Link>
                 </Reveal>

@@ -1,41 +1,23 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Info() {
-  
-  const {pageData, loading, error} = useCmsPage("main-home")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   const items = [
     {
-      title: acf.info_card1_title,
-      text:
-        acf.info_card1_description,
+      title: "REVENUE GENERATION",
+      text: "Through CBM Sales & Biz Solution, these frameworks have generated measurable revenue across multiple sectors — delivering real market results, not just theory.",
     },
     {
-      title: acf.info_card2_title,
-      text:
-        acf.info_card2_description,
+      title: "STRATEGIC BUSINESS GROWTH",
+      text: "Using these same proprietary systems, previously stagnant retail and service-based businesses were restructured and scaled into multi-million-naira operations through disciplined digital execution and reinvestment strategies.",
     },
     {
-      title: acf.info_card3_title,
-      text:
-        acf.info_card3_description,
+      title: "TESTED SYSTEMS",
+      text: "Every framework offered by AGPN has been validated in real market conditions through CBM Sales & Biz Solution. We equip young talent with what already works.",
     },
     {
-      title: acf.info_card4_title,
-      text:
-        acf.info_card4_description,
+      title: "PROVEN FOUNDATIONS",
+      text: "AGPN is built on execution experience and practical systems proven through its parent company.",
     },
   ];
 
@@ -44,13 +26,13 @@ export default function Info() {
       
       <Reveal animation="slide-up">
         <h2 className="text-[18px] font-extrabold text-[#1A2B6D]">
-          {acf.info_built}
+          Built on Measurable Results
         </h2>
       </Reveal>
 
       <Reveal animation="slide-up" delay={80}>
         <p className="mt-2 text-[15px] leading-relaxed text-[#1A2B6D]">
-            {acf.info_description}
+            AGPN is built on frameworks that work. These frameworks were developed and validated through our parent company, CBM Sales & Biz Solution, where they delivered measurable revenue outcomes exceeding ₦100M across multiple sectors. The same systems now power AGPN’s human capital development mission.
         </p>
       </Reveal>
 

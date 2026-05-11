@@ -1,21 +1,7 @@
 import ContactForm from "../components/contactForm";
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Content() {
-
-      const {pageData, loading, error} = useCmsPage("contact")
-    
-      if (loading) {
-        return <Skeleton/>
-      }
-    
-      if (error) {
-        return <p>{error}</p>
-      }
-    
-      const acf = pageData.acf
 
   return (
     <>
@@ -25,32 +11,32 @@ export default function Content() {
           <div className="space-y-6">
             {[
               {
-                title: acf.card_title,
-                desc: acf.card_desc,
+                title: "GENERAL INQUIRIES",
+                desc: "For questions about AGPN, our ecosystem, or how to get involved.",
                 lines: [
-                  acf.card_line,
-                  acf.card_linetwo,
+                  "Email: info@agpnlimited.com",
+                  "Phone: +2349107647503 (Call / WhatsApp)",
                 ],
               },
               {
-                title: acf.card_title2,
-                desc: acf.card_desc2,
+                title: "SPONSORSHIPS & EMPOWERMENT",
+                desc: "For organizations and individuals interested in supporting talent development and human capital empowerment.",
+                email: "Email: sponsorship@agpnlimited.com"
               },
               {
-                title: acf.card_title3,
-                desc: acf.card_desc3,
+                title: "PARTNERSHIPS & UNIVERSITY COLLABORATIONS",
+                desc: "For institutional partnerships, education pathways, and employer collaborations.",
+                email: "Email: partnerships@agpnlimited.com"
               },
               {
-                title: acf.card_title4,
-                desc: acf.card_desc4,
+                title: "FOUNDER DIRECT",
+                desc: "For strategic conversations and high-level engagements.",
+                email: "Email: claudius@agpnlimited.com"
               },
               {
-                title: acf.card_title5,
-                desc: acf.card_desc5,
-              },
-              {
-                title: acf.card_title6,
-                desc: acf.card_desc6,
+                title: "CAREERS & TEAM OPPORTUNITIES",
+                desc: "Join AGPN as an instructor, advisor, or operations contributor. Roles are commission-based and impact-driven.",
+                email: "Email: careers@agpnlimited.com"
               },
             ].map((card, i) => (
               <Reveal key={card.title} animation="slide-up" delay={i * 120}>
@@ -61,7 +47,8 @@ export default function Content() {
                   </h2>
 
                   <p className="text-[#0B1020]/80 mt-2">
-                    {card.desc}
+                    {card.desc}<br/>
+                    {card.email}
                   </p>
 
                   <div className="mt-4 space-y-1 text-[#0B1020]/80">

@@ -1,21 +1,7 @@
 import Reveal from "../components/reveal";
 import { Link } from "react-router-dom";
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function AGPNHeroCard() {
-
-  const {pageData, loading, error} = useCmsPage("home-2")
-      
-    if (loading) {
-        return <Skeleton/>
-    }
-          
-    if (error) {
-        return <p>{error}</p>
-    }
-        
-    const acf = pageData.acf
 
   return (
     <section className="bg-white">
@@ -38,25 +24,25 @@ export default function AGPNHeroCard() {
 
             <Reveal animation="fade-left">
               <p className="text-sm font-semibold text-white/90">
-                {acf.home_hero_title}
+                Afroglobe Prime Network Limited (AGPN)
               </p>
             </Reveal>
 
             <Reveal animation="slide-up" delay={100}>
               <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight text-white">
-                {acf.home_hero_bridge}
+                Bridging Untapped African Talent to Global Opportunity
               </h1>
             </Reveal>
 
             <Reveal animation="fade-right" delay={200}>
               <p className="mt-6 text-lg font-semibold text-white/90 max-w-[36ch]">
-                {acf.home_hero_welcome}
+                Welcome to AGPN — Africa’s Launchpad for Global Digital Careers.
               </p>
             </Reveal>
 
             <Reveal animation="fade-left" delay={300}>
               <p className="mt-4 text-white/80 leading-relaxed max-w-[50ch]">
-                {acf.home_hero_agpn}
+                AGPN is Africa’s structured workforce ecosystem. We equip ambitious young Africans with practical, high-income digital skills, provide real client experience, and connect them directly to paid opportunities and global career pathways.
               </p>
             </Reveal>
 
@@ -66,7 +52,7 @@ export default function AGPNHeroCard() {
                   to="/ecosystem"
                   className="inline-flex items-center justify-center rounded-full bg-white text-[#1A2B6D] px-7 py-3 font-semibold shadow-md transition hover:brightness-110 active:scale-[0.99]"
                 >
-                  {acf.home_hero_explore_button}
+                  Explore Our Ecosystem
                 </Link>
               </Reveal>
 
@@ -75,7 +61,7 @@ export default function AGPNHeroCard() {
                   to="/getinvolved"
                   className="inline-flex items-center justify-center rounded-full border-2 border-white/70 px-7 py-3 font-semibold text-white transition hover:bg-white hover:text-[#1A2B6D]"
                 >
-                  {acf.home_hero_join_button}
+                  Join the First Cohort
                 </Link>
               </Reveal>
             </div>

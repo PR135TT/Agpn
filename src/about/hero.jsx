@@ -1,28 +1,13 @@
 import Reveal from "../components/reveal"
-import useCmsPage from "../hooks/useCmsPage"
-import Skeleton from "../components/skeleton"
 
 export default function Hero() {
-
-    const {pageData, loading, error} = useCmsPage("about")
-  
-    if (loading) {
-      return <Skeleton/>
-    }
-  
-    if (error) {
-      return <p>{error}</p>
-    }
-  
-    const acf = pageData.acf
-    const imageUrl = acf?.about_hero_image
 
   return (
     <section className="relative px-4 pt-6 pb-6 overflow-hidden">
 
       {/* Hero Image */}
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"}
+        src= "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"
         alt="Confident professionals collaborating in a modern global workspace"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -46,14 +31,14 @@ export default function Hero() {
           {/* headline */}
           <Reveal animation="fade-left">
           <h1 className="mt-4 text-[28px] leading-[1.15] font-extrabold text-white">
-            {acf.about_hero_title}
+            ABOUT US
           </h1>
           </Reveal>
 
           {/* description */}
           <Reveal animation="fade-right">
           <p className="mt-3 text-[15px] leading-relaxed text-white/85">
-            {acf.about_hero_description}
+            Afroglobe Prime Network Limited (AGPN) bridges the Access Gap by equipping ambitious African talent with market-validated digital skills and structured pathways to global opportunity, powered by proven frameworks from CBM Sales & Biz Solution.
           </p>
           </Reveal>
 
