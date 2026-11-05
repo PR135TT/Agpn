@@ -1,11 +1,9 @@
 import Header from "../components/header"
-import Path from "../home/pathways"
 import Footer from "../components/footer"
 import Marquee from "../home/marquee"
-import Built from "../home/built"
-import Do from "../home/whatWeDo"
-import Serve from "../home/serve"
 import Hero from "../home/hero1"
+import Content from "../home/content"
+import Choose from "../components/chooseCareer"
 
 export default function Home(){
     return (
@@ -13,10 +11,8 @@ export default function Home(){
         <Header/>
         <Marquee/>
         <Hero/>
-        <Serve/>
-        <Do/>
-        <Built/>
-        <Path/>
+        <Content/>
+        <Choose/>
         <Footer/>
     </div>
     )

@@ -2,10 +2,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Hero from "../empowerment/hero"
 import Intro from "../empowerment/intro"
-import Partner from "../empowerment/partner"
 import Sponsor from "../empowerment/sponsor"
 import Contact from "../components/contact"
-import Right from "../empowerment/right"
 import PageTitle from "../components/pageTitle";
 
 export default function Empowerment() {
@@ -18,8 +16,6 @@ export default function Empowerment() {
         <Hero/>
         <Intro/>
         <Sponsor/>
-        <Partner/>
-        <Right/>
         <Contact/>
       </main>
 

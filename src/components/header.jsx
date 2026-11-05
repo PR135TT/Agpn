@@ -67,11 +67,11 @@ export default function Header() {
         <div className="absolute top-20 right-1 w-56 bg-[#1F3164] shadow-lg rounded-md border border-white/15 overflow-hidden z-50">
           {[
             { to: "/homepage", label: "Home" },
-            { to: "/about", label: "About" },
-            { to: "/ecosystem", label: "Ecosystem" },
-            { to: "/getinvolved", label: "Get Involved" },
+            { to: "/about", label: "About Us" },
+            { to: "/ecosystem", label: "Our Ecosystem" },
+            { to: "/careerPathways", label: "Career Pathways"},
             { to: "/referandearn", label: "Refer & Earn" },
-            { to: "/empowerment", label: "Empowerment" },
+            { to: "/empowerment", label: "Partner With Us" },
             { to: "/certificates", label: "Certificates" },
             { to: "/insights", label: "Insights" },
             { to: "/contact", label: "Contact Us" },

@@ -29,14 +29,16 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-right">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          Knowledge That Bridges the Gap.
+          Knowledge. Guidance. Opportunities.
         </h1>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-left">
         <p className="mt-4 max-w-3xl mx-auto text-lg text-white/90 leading-relaxed">
-          Structured insights on digital skills, career pathways, workforce readiness, business growth, and global opportunity — grounded in real-world execution experience.
+          Stay ahead with practical information, industry guidance and official updates from Afroglobe Prime Network Limited.
+          <br></br>
+          AGPN insights provides clear, real-world knowledge to help you build valuable skills, navigate remote careers, plan international education pathways and make informed choices.
         </p>
         </Reveal>
 

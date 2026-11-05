@@ -29,24 +29,39 @@ export default function AGPNHeroCard() {
             </Reveal>
 
             <Reveal animation="slide-up" delay={100}>
-              <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight text-white">
+              <h1 className="mt-4 text-2xl sm:text-5xl font-extrabold leading-tight text-white">
                 Bridging Untapped African Talent to Global Opportunity
               </h1>
             </Reveal>
 
             <Reveal animation="fade-right" delay={200}>
               <p className="mt-6 text-lg font-semibold text-white/90 max-w-[36ch]">
-                Welcome to AGPN — Africa’s Launchpad for Global Digital Careers.
+                Welcome to Afroglobe Prime Network Limited (AGPN).
               </p>
             </Reveal>
 
             <Reveal animation="fade-left" delay={300}>
               <p className="mt-4 text-white/80 leading-relaxed max-w-[50ch]">
-                AGPN is Africa’s structured workforce ecosystem. We equip ambitious young Africans with practical, high-income digital skills, provide real client experience, and connect them directly to paid opportunities and global career pathways.
+                We equip young talent with globally competitive digital skills, connect them to career and remote job opportunities, guide them through international education and help businesses scale through proven digital systems.
+              </p>
+            </Reveal>
+
+            <Reveal animation="fade-left" delay={300}>
+              <p className="mt-4 text-white/80 leading-relaxed max-w-[50ch]">
+                Building Africa's Next Generation of Market-Ready Talent. Growing Businesses. Expanding Opportunities.
               </p>
             </Reveal>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Reveal animation="fade-right" delay={400}>
+                <Link
+                  to="/careerPathways"
+                  className="inline-flex items-center justify-center rounded-full bg-white text-[#1A2B6D] px-7 py-3 font-semibold shadow-md transition hover:brightness-110 active:scale-[0.99]"
+                >
+                  Apply for the Next Cohort
+                </Link>
+              </Reveal>
+
               <Reveal animation="fade-right" delay={400}>
                 <Link
                   to="/ecosystem"
@@ -61,7 +76,7 @@ export default function AGPNHeroCard() {
                   to="/getinvolved"
                   className="inline-flex items-center justify-center rounded-full border-2 border-white/70 px-7 py-3 font-semibold text-white transition hover:bg-white hover:text-[#1A2B6D]"
                 >
-                  Join the First Cohort
+                  Become a Sponsor
                 </Link>
               </Reveal>
             </div>

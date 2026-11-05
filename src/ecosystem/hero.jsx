@@ -29,12 +29,14 @@ export default function Hero() {
         <Reveal animation="fade-right">
         {/* headline */}
         <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold mb-4">
-          AGPN ECOSYSTEM
+          The 5 Arms of AGPN
         </h1>
 
         {/* description */}
         <p className="text-white/90 text-lg leading-relaxed max-w-4xl">
-          An overview of AGPN’s six-arm infrastructure designed to bridge untapped African talent to structured global opportunities through digital skills, career pathways, business growth systems, international education access, and strategic partnerships.
+          AGPN operates through a structured ecosystem designed to bridge the gap between untapped African talent, global opportunities and business growth.
+          <br/>
+          Our ecosystem consists of two arms we execute internally and three arms through which we connect individuals and businesses to opportunities, resources and strategic partnerships.
         </p>
         </Reveal>
 

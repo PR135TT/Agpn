@@ -28,17 +28,14 @@ export default function Hero() {
         {/* headline */}
         <Reveal animation="fade-left">
         <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold">
-          REFER AND EARN WITH AGPN
+          Earn While You Contribute to Real Growth
         </h1>
         </Reveal>
 
         {/* description */}
         <Reveal animation="fade-right">
         <p className="mt-4 max-w-3xl mx-auto text-lg text-white/90 leading-relaxed">
-          AGPN is not built on hype. It is built on structure, participation, and measurable contribution. <br/>
-          We believe people should not only learn and grow — they should also have structured opportunities to earn within a professional ecosystem.
-          <br/>
-          That is what Refer & Earn represents.
+          AGPN is built on structure and measurable contribution. If you want to earn while helping others find the right career pathways, join our Community Contributor program.
         </p>
         </Reveal>
 

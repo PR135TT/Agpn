@@ -31,22 +31,19 @@ export default function Hero() {
           {/* headline */}
           <Reveal animation="fade-left">
           <h1 className="mt-4 text-[28px] leading-[1.15] font-extrabold text-white">
-            ABOUT US
+            Closing the Access Gap
           </h1>
           </Reveal>
 
           {/* description */}
           <Reveal animation="fade-right">
           <p className="mt-3 text-[15px] leading-relaxed text-white/85">
-            Afroglobe Prime Network Limited (AGPN) bridges the Access Gap by equipping ambitious African talent with market-validated digital skills and structured pathways to global opportunity, powered by proven frameworks from CBM Sales & Biz Solution.
+            Across Africa, millions of smart, hardworking young people are disconnected from the global economy.
+            <br/>
+            They do not lack brains or drive. They lack a clear path, proper guidance and the right access.
+            <br/>
+            Afroglobe Prime Network Limited (AGPN) was built to be that bridge.
           </p>
-          </Reveal>
-
-          {/* button */}
-          <Reveal animation="fade-left">
-          <button className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#1A2B6D] px-4 py-3 text-[13px] font-semibold shadow-md hover:bg-[#16245a] active:scale-[0.99] transition">
-            Our Journey
-          </button>
           </Reveal>
 
         </div>

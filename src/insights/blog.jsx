@@ -4,12 +4,11 @@ export default function Blog() {
   const categories = [
     { name: "All Posts", id: "all-posts" },
     { name: "Digital Skills", id: "digital-skills" },
-    { name: "Jobs & Careers", id: "jobs-careers" },
-    { name: "Remote Work", id: "remote-work" },
+    { name: "Careers & Remote Work", id: "jobs-careers" },
     { name: "Study Abroad", id: "study-abroad" },
     { name: "Business Growth", id: "business-growth" },
     { name: "Opportunities", id: "opportunities" },
-    { name: "AGPN Updates", id: "agpn-updates" },
+    { name: "AGPN News & Updates", id: "agpn-updates" },
   ];
 
   return (

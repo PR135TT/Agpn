@@ -6,42 +6,36 @@ export default function Featured() {
 
   const featured = [
     {
-      id: "frameworks-100m",
+      id: "digital-skills",
       heading:
-        "How Proven Frameworks Generated ₦100M+ in Revenue — And What You Can Learn",
+        "Digital Skills & the Changing World of Work",
       preview:
-        "A breakdown of structured digital systems developed through CBM Sales & Biz Solution and how they produced measurable market results. Practical lessons for entrepreneurs and digital professionals.",
+        "Understanding high-demand digital capabilities and how to build a comptitive career in today's market.",
     },
     {
-      id: "digital-skills-vs-education",
-      heading: "Digital Skills vs Traditional Education: What the Market Actually Rewards",
+      id: "digital-skills-education",
+      heading: "Digital Skills & Formal Education",
       preview:
-        "An honest look at how structured digital competence complements academic education and opens alternative income pathways for young professionals",
+        "How practical digital competencies complement academic qualifications to open up broader career paths.",
     },
     {
-      id: "bridge-access-gap",
+      id: "building-remote-career",
       heading:
-        "5 Practical Ways to Bridge the Access Gap",
+        "Building a Remote Career",
       preview:
-        "Actionable steps to gain relevant digital skills, build positioning, and access structured opportunities through ecosystem-based growth.",
+        "Key skills, portfolio positioning and practical steps to prepare for global remote opportunities.",
     },
     {
-      id: "sponsorship-10k-impact",
-      heading: "How Structured Sponsorship Drives Measurable Impact",
+      id: "essential-steps",
+      heading: "Essential Steps Before Studying Abroad",
       preview:
-        "A transparent explanation of how sponsorship enables access to skills, workforce readiness, and long-term economic participation.",
+        "Clear realistic guidance on choosing international programs, preparing documents and planning your study journey.",
     },
     {
-      id: "study-abroad-truth",
-      heading: "What to Know Before Applying to Study Abroad",
+      id: "practical-digital-strategies",
+      heading: "Practical Digital Strategies for Business Growth",
       preview:
-        "Realistic guidance on preparation, documentation, visa considerations, and structured planning for international education pathways.",
-    },
-    {
-      id: "digital-marketing-training-fails",
-      heading: "Why Many Digital Training Programs Fail — And How to Avoid It",
-      preview:
-        "The difference between certificate-focused training and structured, market-aligned competence development.",
+        "How customer acquisition systems, performance marketing and digital tools help businesses exapnd revenue.",
     },
   ];
 

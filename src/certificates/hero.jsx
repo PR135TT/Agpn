@@ -43,10 +43,9 @@ export default function Hero() {
         {/* description */}
         <Reveal animation="fade-left">
         <p className="text-center mt-6 max-w-3xl leading-relaxed text-white/90">
-          At AGPN, certificates are not academic titles.
-          They are evidence of structured, practical skill development.
+          At Afroglobe Prime Network Limited (AGPN), our certificates recognize participants who complete our practical digital programs and demonstrate real skill.
           <br/>
-          Our certificates exist to confirm that a participant has completed a defined training program and demonstrated applied understanding of relevant digital competencies.
+          An AGPN Certificate of Completion confirms that you have mastered the coursework, completed required projects and gained practical competence in your field.
         </p>
         </Reveal>
 

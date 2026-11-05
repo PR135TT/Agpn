@@ -9,6 +9,7 @@ import GetInvolved from "./pages/getInvolved"
 import Insights from "./pages/insights"
 import ReferEarn from "./pages/referEarn"
 import Certificates from "./pages/certificates"
+import CareerPathways from "./pages/careerPathways"
 import FArticle from "./pages/fArticle"
 import ScrollToTop from "./components/scrollToTop"
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/insights" element={<Insights />} />
         <Route path="/referandearn" element={<ReferEarn />} />
         <Route path="/certificates" element={<Certificates />} />
+        <Route path="/careerPathways" element={<CareerPathways />} />
         <Route path="/fArticle" element={<FArticle article="Eron"/>}/>
       </Routes>
     </Router>

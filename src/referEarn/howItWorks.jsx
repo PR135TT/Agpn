@@ -13,11 +13,10 @@ export default function HowItWorks(){
             </h2>
 
             <div className="mt-6 space-y-3 font-semibold text-[#0B1020]/80">
-            <p>1️⃣ Register as an AGPN Community Contributor</p>
-            <p>2️⃣ Receive your unique referral identification</p>
-            <p>3️⃣ Refer a young talent or business owner</p>
-            <p>4️⃣ They complete payment and onboarding</p>
-            <p>5️⃣ You earn your commission</p>
+            <p>1️⃣ Register as an AGPN Community Contributor (Free).</p>
+            <p>2️⃣ Get your unique tracking link.</p>
+            <p>3️⃣ Refer young talents to our paid digital skills programs or business owners to our growth services.</p>
+            <p>4️⃣ Earn up to 40% commission upon confirmed enrollment or onboarding.</p>
             </div>
 
             <p className="mt-6 font-extrabold text-[#1A2B6D]">
