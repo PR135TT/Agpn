@@ -186,7 +186,7 @@ const PATHWAYS = [
     id: "ai-prompt-engineering",
     number: "06",
     title: "AI Prompt Engineering & Automation",
-    image: "/pathway-ai-prompt-engineering.jpeg",
+    image: "/promptEngineer.jpeg",
     imageAlt: "Black professional using AI tools on a laptop to automate work",
     summary:
       "Use AI tools effectively to write better prompts, automate repetitive tasks and work more productively.",
