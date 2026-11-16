@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/footer";
-
-// Change this to your real application link or route.
-const APPLY_URL = "#apply";
+import ApplicationForm from "../components/applicationForm";
 
 const META_DESCRIPTION =
   "Explore AGPN Career Pathways and gain practical, market-relevant skills in B2B Sales, Performance Marketing, Virtual Assistance, Social Media Management, Data Analysis, and AI Prompt Engineering & Automation. Build professional capabilities and connect to career opportunities.";
@@ -22,7 +20,7 @@ const PATHWAYS = [
     id: "b2b-sales",
     number: "01",
     title: "B2B Sales & Business Development",
-    image: "/pathway-b2b-sales.jpeg",
+    image: "/sales_business_development.png",
     imageAlt: "Two Black business professionals shaking hands during a sales meeting in a modern office",
     summary:
       "Learn how businesses acquire customers, develop strategic partnerships, manage sales pipelines and generate revenue.",
@@ -54,7 +52,7 @@ const PATHWAYS = [
     id: "performance-marketing",
     number: "02",
     title: "Performance Marketing & Paid Media",
-    image: "/pathway-performance-marketing.jpeg",
+    image: "/performance_marketing.png",
     imageAlt: "Black marketing professional reviewing advertising performance dashboards on multiple screens",
     summary:
       "Develop practical skills in digital advertising, customer acquisition and campaign performance.",
@@ -86,7 +84,7 @@ const PATHWAYS = [
     id: "virtual-assistance",
     number: "03",
     title: "Virtual Assistance & Remote Work Operations",
-    image: "/pathway-virtual-assistance.jpeg",
+    image: "/virtual_assistance.png",
     imageAlt: "Black woman working remotely on a laptop in a bright home office",
     summary:
       "Learn to support businesses and executives remotely through administrative, communication and operational services.",
@@ -120,7 +118,7 @@ const PATHWAYS = [
     id: "social-media",
     number: "04",
     title: "Social Media Management",
-    image: "/pathway-social-media.jpeg",
+    image: "/social_media_management.png",
     imageAlt: "Black social media manager planning content on a laptop and phone",
     summary:
       "Learn to plan content, grow online communities and build a strong brand presence across social media platforms.",
@@ -153,7 +151,7 @@ const PATHWAYS = [
     id: "data-analysis",
     number: "05",
     title: "Data Analysis",
-    image: "/pathway-data-analysis.jpeg",
+    image: "/data_analysis.png",
     imageAlt: "Black data analyst reviewing charts and spreadsheets on a computer screen",
     summary:
       "Turn raw data into clear insights that support business decisions, using practical tools like Excel, SQL and Power BI.",
@@ -186,7 +184,7 @@ const PATHWAYS = [
     id: "ai-prompt-engineering",
     number: "06",
     title: "AI Prompt Engineering & Automation",
-    image: "/promptEngineer.jpeg",
+    image: "/prompt_engineering.png",
     imageAlt: "Black professional using AI tools on a laptop to automate work",
     summary:
       "Use AI tools effectively to write better prompts, automate repetitive tasks and work more productively.",
@@ -270,7 +268,7 @@ function PathwayImage({ src, alt }) {
 
 /* ---------- One pathway section ---------- */
 
-function PathwaySection({ pathway }) {
+function PathwaySection({ pathway, onApply }) {
   const {
     id,
     number,
@@ -315,12 +313,13 @@ function PathwaySection({ pathway }) {
         ))}
       </ul>
 
-      <a
-        href={APPLY_URL}
+      <button
+        type="button"
+        onClick={() => onApply(title)}
         className="mt-6 block w-full rounded-full bg-[#1F3164] px-6 py-4 text-center text-base font-medium text-white transition-colors hover:bg-[#162452] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3164] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       >
         Apply for this programme
-      </a>
+      </button>
 
       {/* Full details, collapsed by default */}
       <details className="mt-4 rounded-2xl border border-[#dde3f3] bg-[#eef1fa] p-4">
@@ -386,6 +385,11 @@ function PathwaySection({ pathway }) {
 export default function CareerPathways() {
   const { hash } = useLocation();
 
+  // Application form pop-up. `programme` pre-selects the programme that was clicked.
+  const [form, setForm] = useState({ open: false, programme: "" });
+  const openForm = (programme = "") => setForm({ open: true, programme });
+  const closeForm = () => setForm({ open: false, programme: "" });
+
   // Scroll to the programme named in the link, e.g. /careerPathways#data-analysis
   useEffect(() => {
     if (!hash) return;
@@ -428,7 +432,7 @@ export default function CareerPathways() {
           </div>
 
           {PATHWAYS.map((pathway) => (
-            <PathwaySection key={pathway.id} pathway={pathway} />
+            <PathwaySection key={pathway.id} pathway={pathway} onApply={openForm} />
           ))}
 
           <section
@@ -464,12 +468,13 @@ export default function CareerPathways() {
               </p>
             </div>
 
-            <a
-              href={APPLY_URL}
+            <button
+              type="button"
+              onClick={() => openForm()}
               className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-base font-bold text-[#1F3164] transition-colors hover:bg-[#eef1fa] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1F3164]"
             >
               APPLY FOR THE NEXT COHORT
-            </a>
+            </button>
 
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#c9d2f0]">
               Visit our application page to complete your registration and take
@@ -486,6 +491,10 @@ export default function CareerPathways() {
         </div>
       </main>
       <Footer />
+
+      {form.open && (
+        <ApplicationForm initialProgramme={form.programme} onClose={closeForm} />
+      )}
     </>
   );
 }

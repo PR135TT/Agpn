@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <!-- Existing form -->
   <form name="quick-contact" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="quick-contact" />
 
@@ -11,6 +12,37 @@
       <option>General Inquiry</option>
     </select>
     <textarea name="message"></textarea>
+  </form>
+
+  <!-- Career Pathways application -->
+  <form name="career-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="career-application" />
+    <input type="text" name="bot-field" />
+
+    <input type="text" name="fullName" />
+    <input type="email" name="email" />
+    <input type="tel" name="whatsapp" />
+    <input type="text" name="country" />
+    <input type="text" name="state" />
+    <input type="text" name="city" />
+
+    <input type="text" name="programme" />
+    <input type="text" name="otherProgramme" />
+
+    <input type="text" name="education" />
+    <input type="text" name="employment" />
+
+    <input type="text" name="hasComputer" />
+    <input type="text" name="hasInternet" />
+    <input type="text" name="hoursPerWeek" />
+
+    <textarea name="reason"></textarea>
+
+    <input type="text" name="heardFrom" />
+
+    <input type="text" name="declarationAccurate" />
+    <input type="text" name="declarationNoGuarantee" />
+    <input type="text" name="declarationContact" />
   </form>
 </body>
 </html>

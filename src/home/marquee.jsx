@@ -2,12 +2,12 @@ import {useState} from "react"
 import MarqueeForm from "./marqueeForm"
 
 export default function MarqueeSection() {
-  const text = "Apply for First Cohort";
+  const text = "Afroglobe Prime Network Limited";
   const items = Array.from({ length: 20 });
   const [showForm, setShowForm] = useState(false)
 
   return (
-    <section className="bg-slate-900 overflow-hidden py-4 pt-20">
+    <section className="bg-slate-900 overflow-hidden py-1 pt-20">
       <div className="relative flex overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
 
@@ -21,10 +21,11 @@ export default function MarqueeSection() {
                 {text}
               </span>
 
+              {/*
               <button onClick={() => setShowForm(true)}
               className="bg-[#1A2B6D] mt-1 text-yellow-300 px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-md hover:bg-[#142158] transition">
                 Click Now
-              </button>
+              </button>*/}
             </div>
           ))}
 
@@ -38,10 +39,12 @@ export default function MarqueeSection() {
                 {text}
               </span>
 
+              {/*
               <button onClick={() => setShowForm(true)}
                className="bg-[#1A2B6D] text-white px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-md hover:bg-[#142158] transition">
                 Click Now
               </button>
+              */}
             </div>
           ))}
 
