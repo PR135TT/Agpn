@@ -44,7 +44,7 @@ export default function WhoAgpnIsFor() {
         {/* Heading */}
         <h2
           id="who-agpn-is-for-title"
-          className="mt-5 text-4xl font-semibold leading-[1.15] text-black sm:text-5xl"
+          className="mt-5 text-3xl font-semibold leading-[1.15] text-black sm:text-5xl"
           style={serif}
         >
           Built for Africans who want to compete in{" "}
@@ -68,7 +68,7 @@ export default function WhoAgpnIsFor() {
         </ul>
 
         {/* Closing copy */}
-        <div className="mt-10 space-y-8 text-lg leading-[1.9] text-[#5b6b82] sm:text-xl sm:leading-[1.9]">
+        <div className="mt-10 space-y-8 text-sm leading-[1.9] text-[#5b6b82] sm:text-xl sm:leading-[1.9]">
           <p>
             If you are ready to acquire practical skills, develop your
             capabilities, and position yourself for global opportunities — AGPN
