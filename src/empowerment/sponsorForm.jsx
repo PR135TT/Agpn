@@ -1,48 +1,219 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // Serverless function that emails the request.
 // File: netlify/functions/send-partnership-form.js
 const SUBMIT_URL = "/.netlify/functions/send-partnership-form"
 
-export default function PartnershipForm({ showForm, setShowForm }) {
+// These fields can have several values (checkbox groups)
+const ARRAY_FIELDS = ["partnershipType", "supportType"]
 
-  const [formData, setFormData] = useState({})
+const APPLICANT_TYPES = [
+  "Individual",
+  "Organization / Company",
+  "Foundation / NGO",
+  "Educational Institution",
+  "Government Agency",
+]
+
+const PARTNERSHIP_INTERESTS = [
+  { value: "Sponsor students", label: "Sponsor AGPN students" },
+  { value: "Scholarships", label: "Provide scholarships" },
+  { value: "Hire graduates", label: "Hire AGPN professionals" },
+  { value: "Corporate training", label: "Corporate training partnership" },
+  { value: "Educational collaboration", label: "Educational collaboration" },
+  { value: "Study abroad pathway", label: "Study abroad pathway" },
+  { value: "Youth empowerment", label: "Youth empowerment initiative" },
+  { value: "Strategic partnership", label: "Strategic partnership" },
+]
+
+const IMPACT_LEVELS = [
+  "Sponsor 1–5 students",
+  "Sponsor 5–10 students",
+  "Sponsor 10–50 students",
+  "Sponsor 50–100 students",
+  "Sponsor 100+ students",
+  "Provide internships or job opportunities",
+  "Open to strategic partnership discussion",
+]
+
+const SUPPORT_TYPES = [
+  { value: "Financial sponsorship", label: "Financial sponsorship" },
+  { value: "Scholarships", label: "Scholarships" },
+  { value: "Internships", label: "Internship opportunities" },
+  { value: "Job placement", label: "Job placement" },
+  { value: "Mentorship", label: "Mentorship" },
+  { value: "Strategic collaboration", label: "Strategic collaboration" },
+]
+
+const INVESTMENT_RANGES = [
+  "Below ₦500,000",
+  "₦500,000 – ₦1M",
+  "₦1M – ₦5M",
+  "₦5M – ₦10M",
+  "Above ₦10M",
+  "To be discussed",
+]
+
+const inputClass =
+  "w-full rounded-lg border border-[#c9d2f0] bg-white px-4 py-3 text-base text-[#162452] placeholder:text-slate-400 focus:border-[#1F3164] focus:outline-none focus:ring-2 focus:ring-[#1F3164]/30"
+
+/* ---------- Small form building blocks ---------- */
+
+function TextField({ label, name, type = "text", required = false, autoComplete, inputMode }) {
+  const id = `partnership-${name}`
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-[#162452]">
+        {label}
+      </label>
+      <input
+        id={id}
+        name={name}
+        type={type}
+        required={required}
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        className={inputClass}
+      />
+    </div>
+  )
+}
+
+function SelectField({ label, name, options }) {
+  const id = `partnership-${name}`
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-[#162452]">
+        {label}
+      </label>
+      <select id={id} name={name} defaultValue="" className={inputClass}>
+        <option value="">Select an option</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+}
+
+function CheckboxGroup({ legend, name, options }) {
+  return (
+    <fieldset>
+      <legend className="mb-2 text-sm font-semibold text-[#162452]">{legend}</legend>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {options.map((option) => (
+          <label
+            key={option.value}
+            className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#dde3f3] px-4 py-3 text-base text-[#162452] hover:bg-[#eef1fa]"
+          >
+            <input
+              type="checkbox"
+              name={name}
+              value={option.value}
+              className="h-5 w-5 shrink-0 accent-[#1F3164]"
+            />
+            {option.label}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  )
+}
+
+function SectionTitle({ children }) {
+  return (
+    <h3 className="mb-4 border-b border-[#dde3f3] pb-2 text-sm font-extrabold tracking-wide text-[#1F3164]">
+      {children}
+    </h3>
+  )
+}
+
+/* ---------- The modal ---------- */
+
+export default function PartnershipForm({ showForm, setShowForm }) {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState("")
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+  const dialogRef = useRef(null)
+  const closeRef = useRef(() => {})
+  closeRef.current = () => setShowForm(false)
 
-    if (type === "checkbox") {
-      setFormData(prev => {
-        const arr = prev[name] || []
-        if (checked) return { ...prev, [name]: [...arr, value] }
-        return { ...prev, [name]: arr.filter(v => v !== value) }
-      })
-    } else {
-      setFormData({ ...formData, [name]: value })
+  // Reset the screen each time the form is closed
+  useEffect(() => {
+    if (!showForm) {
+      setSubmitted(false)
+      setError("")
     }
-  }
+  }, [showForm])
+
+  // Focus handling, Escape to close, scroll lock (only while open)
+  useEffect(() => {
+    if (!showForm) return
+
+    const previouslyFocused = document.activeElement
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    dialogRef.current?.focus()
+
+    function onKeyDown(event) {
+      if (event.key === "Escape") {
+        closeRef.current()
+        return
+      }
+      if (event.key !== "Tab" || !dialogRef.current) return
+
+      const focusable = dialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusable.length) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown)
+    return () => {
+      document.removeEventListener("keydown", onKeyDown)
+      document.body.style.overflow = originalOverflow
+      if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus()
+    }
+  }, [showForm])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
     setSubmitting(true)
 
+    // Read values straight from the form, so browser autofill is always included
+    const formValues = new FormData(e.currentTarget)
+    const data = {}
+    for (const key of new Set(formValues.keys())) {
+      data[key] = ARRAY_FIELDS.includes(key) ? formValues.getAll(key) : formValues.get(key)
+    }
+
     try {
       if (process.env.NODE_ENV !== "production") {
         // The function only exists on the deployed site, so locally we just log it.
-        console.info("Partnership request (development only, not sent):", formData)
+        console.info("Partnership request (development only, not sent):", data)
       } else {
         const response = await fetch(SUBMIT_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(data),
         })
 
         if (!response.ok) throw new Error(`Request failed: ${response.status}`)
@@ -60,149 +231,221 @@ export default function PartnershipForm({ showForm, setShowForm }) {
   if (!showForm) return null
 
   return (
-
     <div
-      className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 p-6"
-      onClick={(e) => {
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 sm:items-center sm:p-4"
+      onMouseDown={(e) => {
         if (e.target === e.currentTarget) setShowForm(false)
       }}
     >
-
-      <div className="bg-[#222222] text-white w-full max-w-3xl rounded-lg shadow-xl p-8 overflow-y-auto max-h-[90vh]">
-
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="partnership-title"
+        tabIndex={-1}
+        className="flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl focus:outline-none sm:rounded-3xl"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between gap-4 bg-[#1F3164] px-5 py-4 text-white">
+          <h2 id="partnership-title" className="text-lg font-extrabold">
             AGPN Partnership and Sponsorship
           </h2>
-
           <button
+            type="button"
             onClick={() => setShowForm(false)}
-            className="text-xl"
+            aria-label="Close partnership form"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            ✕
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
           </button>
         </div>
 
-        {submitted ? (
+        {/* Body */}
+        <div className="overflow-y-auto px-5 py-6 sm:px-8">
+          {submitted ? (
+            <div role="status" className="py-6 text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#eef1fa] text-[#1F3164]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-8 w-8"
+                  aria-hidden="true"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
 
-          <div className="text-center py-12 space-y-4">
+              <div className="mt-6 space-y-3 text-base leading-relaxed text-slate-700">
+                <p className="font-semibold text-[#162452]">
+                  Thank you for your interest in partnering with AGPN.
+                </p>
+                <p>
+                  Our team will review your submission and contact you within 2–3
+                  business days.
+                </p>
+              </div>
 
-            <h3 className="text-xl font-semibold">
-              Thank you for your interest in partnering with AGPN.
-            </h3>
+              <button
+                type="button"
+                onClick={() => setShowForm(false)}
+                className="mt-8 rounded-full bg-[#1F3164] px-10 py-3 text-base font-semibold text-white transition-colors hover:bg-[#162452] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3164] focus-visible:ring-offset-2"
+              >
+                Close
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot: real people never see this, bots usually fill it */}
+              <p className="hidden" aria-hidden="true">
+                <label>
+                  Don’t fill this out: <input name="company" tabIndex={-1} autoComplete="off" />
+                </label>
+              </p>
 
-            <p className="text-gray-300">
-              Our team will review your submission and contact you
-              within 2–3 business days.
-            </p>
+              {/* YOUR DETAILS */}
+              <section>
+                <SectionTitle>YOUR DETAILS</SectionTitle>
+                <div className="space-y-4">
+                  <TextField label="Full Name" name="name" required autoComplete="name" />
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                  />
+                  <TextField
+                    label="Phone Number"
+                    name="phone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                  />
+                </div>
+              </section>
 
-          </div>
+              {/* ORGANIZATION */}
+              <section>
+                <SectionTitle>ORGANIZATION</SectionTitle>
+                <div className="space-y-4">
+                  <SelectField label="Applying as" name="applicantType" options={APPLICANT_TYPES} />
+                  <TextField
+                    label="Organization / Company Name"
+                    name="organizationName"
+                    autoComplete="organization"
+                  />
+                  <TextField
+                    label="Your Role / Position"
+                    name="role"
+                    autoComplete="organization-title"
+                  />
+                  <TextField
+                    label="Organization Website"
+                    name="website"
+                    type="url"
+                    inputMode="url"
+                    autoComplete="url"
+                  />
+                </div>
+              </section>
 
-        ) : (
+              {/* PARTNERSHIP INTEREST */}
+              <section>
+                <SectionTitle>PARTNERSHIP INTEREST</SectionTitle>
+                <div className="space-y-6">
+                  <CheckboxGroup
+                    legend="Partnership Interest"
+                    name="partnershipType"
+                    options={PARTNERSHIP_INTERESTS}
+                  />
+                  <SelectField label="Impact level" name="impactLevel" options={IMPACT_LEVELS} />
+                  <div>
+                    <label
+                      htmlFor="partnership-interestDescription"
+                      className="mb-1.5 block text-sm font-semibold text-[#162452]"
+                    >
+                      Describe your interest in supporting AGPN
+                    </label>
+                    <textarea
+                      id="partnership-interestDescription"
+                      name="interestDescription"
+                      rows={4}
+                      className={inputClass}
+                    />
+                  </div>
+                </div>
+              </section>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+              {/* SUPPORT YOU CAN PROVIDE */}
+              <section>
+                <SectionTitle>SUPPORT YOU CAN PROVIDE</SectionTitle>
+                <div className="space-y-6">
+                  <CheckboxGroup
+                    legend="Support You Can Provide"
+                    name="supportType"
+                    options={SUPPORT_TYPES}
+                  />
+                  <SelectField
+                    label="Estimated Investment"
+                    name="investmentRange"
+                    options={INVESTMENT_RANGES}
+                  />
+                </div>
+              </section>
 
-          {/* Honeypot: real people never see this, bots usually fill it */}
-          <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" onChange={handleChange} className="hidden"/>
+              {/* ADDITIONAL COMMENTS */}
+              <section>
+                <SectionTitle>ADDITIONAL COMMENTS</SectionTitle>
+                <label
+                  htmlFor="partnership-comments"
+                  className="mb-1.5 block text-sm font-semibold text-[#162452]"
+                >
+                  Additional comments or questions
+                </label>
+                <textarea
+                  id="partnership-comments"
+                  name="comments"
+                  rows={4}
+                  className={inputClass}
+                />
+              </section>
 
-          <input name="name" placeholder="Full Name" required onChange={handleChange} className="w-full p-3 rounded text-black"/>
+              {error && (
+                <p
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-base text-red-800"
+                >
+                  {error}
+                </p>
+              )}
 
-          <input name="email" type="email" placeholder="Email Address" required onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <input name="phone" placeholder="Phone Number" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <select name="applicantType" onChange={handleChange} className="w-full p-3 rounded text-black">
-            <option>Applying as</option>
-            <option>Individual</option>
-            <option>Organization / Company</option>
-            <option>Foundation / NGO</option>
-            <option>Educational Institution</option>
-            <option>Government Agency</option>
-          </select>
-
-          <input name="organizationName" placeholder="Organization / Company Name" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <input name="role" placeholder="Your Role / Position" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <input name="website" placeholder="Organization Website" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <label className="block font-semibold">Partnership Interest</label>
-
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            <label><input type="checkbox" name="partnershipType" value="Sponsor students" onChange={handleChange}/> Sponsor AGPN students</label>
-            <label><input type="checkbox" name="partnershipType" value="Scholarships" onChange={handleChange}/> Provide scholarships</label>
-            <label><input type="checkbox" name="partnershipType" value="Hire graduates" onChange={handleChange}/> Hire AGPN professionals</label>
-            <label><input type="checkbox" name="partnershipType" value="Corporate training" onChange={handleChange}/> Corporate training partnership</label>
-            <label><input type="checkbox" name="partnershipType" value="Educational collaboration" onChange={handleChange}/> Educational collaboration</label>
-            <label><input type="checkbox" name="partnershipType" value="Study abroad pathway" onChange={handleChange}/> Study abroad pathway</label>
-            <label><input type="checkbox" name="partnershipType" value="Youth empowerment" onChange={handleChange}/> Youth empowerment initiative</label>
-            <label><input type="checkbox" name="partnershipType" value="Strategic partnership" onChange={handleChange}/> Strategic partnership</label>
-          </div>
-
-          <select name="impactLevel" onChange={handleChange} className="w-full p-3 rounded text-black">
-            <option>Impact level</option>
-            <option>Sponsor 1–5 students</option>
-            <option>Sponsor 5–10 students</option>
-            <option>Sponsor 10–50 students</option>
-            <option>Sponsor 50–100 students</option>
-            <option>Sponsor 100+ students</option>
-            <option>Provide internships or job opportunities</option>
-            <option>Open to strategic partnership discussion</option>
-          </select>
-
-          <textarea name="interestDescription" placeholder="Describe your interest in supporting AGPN" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          <label className="block font-semibold">Support You Can Provide</label>
-
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            <label><input type="checkbox" name="supportType" value="Financial sponsorship" onChange={handleChange}/> Financial sponsorship</label>
-            <label><input type="checkbox" name="supportType" value="Scholarships" onChange={handleChange}/> Scholarships</label>
-            <label><input type="checkbox" name="supportType" value="Internships" onChange={handleChange}/> Internship opportunities</label>
-            <label><input type="checkbox" name="supportType" value="Job placement" onChange={handleChange}/> Job placement</label>
-            <label><input type="checkbox" name="supportType" value="Mentorship" onChange={handleChange}/> Mentorship</label>
-            <label><input type="checkbox" name="supportType" value="Strategic collaboration" onChange={handleChange}/> Strategic collaboration</label>
-          </div>
-
-          <select name="investmentRange" onChange={handleChange} className="w-full p-3 rounded text-black">
-            <option>Estimated Investment</option>
-            <option>Below ₦500,000</option>
-            <option>₦500,000 – ₦1M</option>
-            <option>₦1M – ₦5M</option>
-            <option>₦5M – ₦10M</option>
-            <option>Above ₦10M</option>
-            <option>To be discussed</option>
-          </select>
-
-          <textarea name="comments" placeholder="Additional comments or questions" onChange={handleChange} className="w-full p-3 rounded text-black"/>
-
-          {error && (
-            <p role="alert" className="rounded bg-red-900/40 border border-red-400/50 p-3 text-sm text-red-100">
-              {error}
-            </p>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full rounded-full bg-[#1F3164] px-6 py-4 text-base font-bold tracking-wide text-white transition-colors hover:bg-[#162452] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F3164] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {submitting ? "Sending…" : "Submit Partnership Request"}
+              </button>
+            </form>
           )}
-
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full bg-yellow-500 text-black font-semibold p-3 rounded disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {submitting ? "Sending…" : "Submit Partnership Request"}
-          </button>
-
-        </form>
-
-        )}
-
-        <div className="text-center mt-3">
-          <button
-            onClick={() => setShowForm(false)}
-            className="text-xl">
-            ✕
-          </button>
         </div>
-
       </div>
-
     </div>
   )
 }
