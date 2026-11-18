@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-// Must match the form name in public/netlify-form.html
-const FORM_NAME = "career-application";
+// Serverless function that emails the application (same approach as the sponsor form).
+// File: netlify/functions/send-career-application.js
+const SUBMIT_URL = "/api/send-career-application";
 
 const PROGRAMMES = [
   "B2B Sales & Business Development",
@@ -187,20 +188,17 @@ export default function ApplicationForm({ initialProgramme = "", onClose }) {
     setError("");
     setSubmitting(true);
 
-    const body = new URLSearchParams(new FormData(event.currentTarget)).toString();
+    const data = Object.fromEntries(new FormData(event.currentTarget));
 
     try {
       if (process.env.NODE_ENV !== "production") {
-        // Netlify Forms only work on the deployed site, so locally we just log it.
-        console.info(
-          "Application (development only, not sent):",
-          Object.fromEntries(new URLSearchParams(body))
-        );
+        // The /api route only exists on the deployed site, so locally we just log it.
+        console.info("Application (development only, not sent):", data);
       } else {
-        const response = await fetch("/", {
+        const response = await fetch(SUBMIT_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
         });
         if (!response.ok) throw new Error(`Request failed: ${response.status}`);
       }
@@ -294,18 +292,11 @@ export default function ApplicationForm({ initialProgramme = "", onClose }) {
               </button>
             </div>
           ) : (
-            <form
-              name={FORM_NAME}
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
-              className="space-y-8"
-            >
-              <input type="hidden" name="form-name" value={FORM_NAME} />
-              <p className="hidden">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot: real people never see or fill this, bots usually do */}
+              <p className="hidden" aria-hidden="true">
                 <label>
-                  Don’t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                  Don’t fill this out: <input name="company" tabIndex={-1} autoComplete="off" />
                 </label>
               </p>
 

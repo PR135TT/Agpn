@@ -2,10 +2,16 @@
 
 import { useState } from "react"
 
+// Serverless function that emails the request.
+// File: netlify/functions/send-partnership-form.js
+const SUBMIT_URL = "/.netlify/functions/send-partnership-form"
+
 export default function PartnershipForm({ showForm, setShowForm }) {
 
   const [formData, setFormData] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -23,16 +29,32 @@ export default function PartnershipForm({ showForm, setShowForm }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError("")
+    setSubmitting(true)
 
-    await fetch("/api/send-partnership-form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    try {
+      if (process.env.NODE_ENV !== "production") {
+        // The function only exists on the deployed site, so locally we just log it.
+        console.info("Partnership request (development only, not sent):", formData)
+      } else {
+        const response = await fetch(SUBMIT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
 
-    setSubmitted(true)
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+      }
+
+      // Only show the thank-you screen when the request really worked
+      setSubmitted(true)
+    } catch (err) {
+      setError("We couldn’t send your request. Please check your connection and try again.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (!showForm) return null
@@ -80,9 +102,12 @@ export default function PartnershipForm({ showForm, setShowForm }) {
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
-          <input name="name" placeholder="Full Name" onChange={handleChange} className="w-full p-3 rounded text-black"/>
+          {/* Honeypot: real people never see this, bots usually fill it */}
+          <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" onChange={handleChange} className="hidden"/>
 
-          <input name="email" type="email" placeholder="Email Address" onChange={handleChange} className="w-full p-3 rounded text-black"/>
+          <input name="name" placeholder="Full Name" required onChange={handleChange} className="w-full p-3 rounded text-black"/>
+
+          <input name="email" type="email" placeholder="Email Address" required onChange={handleChange} className="w-full p-3 rounded text-black"/>
 
           <input name="phone" placeholder="Phone Number" onChange={handleChange} className="w-full p-3 rounded text-black"/>
 
@@ -150,11 +175,18 @@ export default function PartnershipForm({ showForm, setShowForm }) {
 
           <textarea name="comments" placeholder="Additional comments or questions" onChange={handleChange} className="w-full p-3 rounded text-black"/>
 
+          {error && (
+            <p role="alert" className="rounded bg-red-900/40 border border-red-400/50 p-3 text-sm text-red-100">
+              {error}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-black font-semibold p-3 rounded"
+            disabled={submitting}
+            className="w-full bg-yellow-500 text-black font-semibold p-3 rounded disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Submit Partnership Request
+            {submitting ? "Sending…" : "Submit Partnership Request"}
           </button>
 
         </form>
