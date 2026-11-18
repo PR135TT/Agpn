@@ -1,35 +1,29 @@
-// Netlify Function: emails a Career Pathways application.
-// Save as: netlify/functions/send-career-application.js
-// It is reachable at /.netlify/functions/send-career-application with no extra config.
+// Netlify Function: emails a Partnership / Sponsorship request.
+// Save as: netlify/functions/send-partnership-form.js
+// Reachable at /.netlify/functions/send-partnership-form (no extra config needed).
 //
 // Environment variables (Netlify > Site configuration > Environment variables):
-//   RESEND_API_KEY       your Resend API key
-//   CAREER_FROM_EMAIL    e.g. "AGPN Applications <applications@agpnlimited.com>"
-//                        (must be an address on a domain you verified in Resend)
-//   CAREER_TO_EMAIL      where applications are delivered; separate several with commas
+//   RESEND_API_KEY      your Resend API key (shared with the career function)
+//   SPONSOR_FROM_EMAIL  e.g. "AGPN Partnerships <partnerships@agpnlimited.com>"
+//                       falls back to CAREER_FROM_EMAIL if not set
+//   SPONSOR_TO_EMAIL    where requests are delivered; separate several with commas
+//                       falls back to CAREER_TO_EMAIL if not set
 
 const FIELDS = [
-  ["Full Name", "fullName"],
+  ["Full Name", "name"],
   ["Email Address", "email"],
-  ["WhatsApp Phone Number", "whatsapp"],
-  ["Country of Residence", "country"],
-  ["State", "state"],
-  ["City", "city"],
-  ["Programme", "programme"],
-  ["Other programme (specified)", "otherProgramme"],
-  ["Highest level of education", "education"],
-  ["Employment status", "employment"],
-  ["Has laptop or desktop", "hasComputer"],
-  ["Has reliable internet", "hasInternet"],
-  ["Hours per week", "hoursPerWeek"],
-  ["Reason for applying", "reason"],
-  ["How they heard about AGPN", "heardFrom"],
-  ["Confirmed information is accurate", "declarationAccurate"],
-  ["Understands admission is not guaranteed", "declarationNoGuarantee"],
-  ["Consents to email / WhatsApp contact", "declarationContact"],
+  ["Phone Number", "phone"],
+  ["Applying as", "applicantType"],
+  ["Organization / Company Name", "organizationName"],
+  ["Role / Position", "role"],
+  ["Organization Website", "website"],
+  ["Partnership Interest", "partnershipType"],
+  ["Impact level", "impactLevel"],
+  ["Interest in supporting AGPN", "interestDescription"],
+  ["Support they can provide", "supportType"],
+  ["Estimated investment", "investmentRange"],
+  ["Additional comments", "comments"],
 ];
-
-const REQUIRED = ["fullName", "email", "whatsapp", "programme", "reason"];
 
 const json = (statusCode, body) => ({
   statusCode,
@@ -47,6 +41,10 @@ const escapeHtml = (value) =>
 // Keep header values (subject) on one line.
 const oneLine = (value) => String(value).replace(/[\r\n]+/g, " ").trim();
 
+// Checkbox groups arrive as arrays; everything else as strings.
+const asText = (value) =>
+  Array.isArray(value) ? value.join(", ") : String(value ?? "").trim();
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return json(405, { error: "Method not allowed" });
@@ -62,27 +60,25 @@ exports.handler = async (event) => {
   // Honeypot: pretend success so bots learn nothing
   if (data.company) return json(200, { ok: true });
 
-  const missing = REQUIRED.filter((key) => !String(data[key] || "").trim());
-  if (missing.length) {
-    return json(400, { error: `Missing: ${missing.join(", ")}` });
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) {
-    return json(400, { error: "Invalid email address" });
+  if (!asText(data.name)) return json(400, { error: "Name is required" });
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(asText(data.email))) {
+    return json(400, { error: "A valid email address is required" });
   }
 
-  const RESEND_API_KEY = process.env.RESEND_API_KEY || process.env.RESEND_ACTUAL_API_KEY;
-  const { CAREER_FROM_EMAIL, CAREER_TO_EMAIL } = process.env;
-  if (!RESEND_API_KEY || !CAREER_FROM_EMAIL || !CAREER_TO_EMAIL) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.RESEND_ACTUAL_API_KEY;
+  const from = process.env.SPONSOR_FROM_EMAIL || process.env.CAREER_FROM_EMAIL;
+  const to = process.env.SPONSOR_TO_EMAIL || process.env.CAREER_TO_EMAIL;
+  if (!apiKey || !from || !to) {
     console.error("Email environment variables are not set");
     return json(500, { error: "Email is not configured" });
   }
 
-  const rows = FIELDS.filter(([, key]) => String(data[key] || "").trim()).map(
-    ([label, key]) => [label, String(data[key]).trim()]
+  const rows = FIELDS.map(([label, key]) => [label, asText(data[key])]).filter(
+    ([, value]) => value
   );
 
   const html = `
-    <h2 style="margin:0 0 12px;color:#1F3164">New Career Pathways Application</h2>
+    <h2 style="margin:0 0 12px;color:#1F3164">New Partnership / Sponsorship Request</h2>
     <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">
       ${rows
         .map(
@@ -97,23 +93,23 @@ exports.handler = async (event) => {
 
   const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
 
-  const programme =
-    data.programme === "Other" && data.otherProgramme
-      ? `Other: ${data.otherProgramme}`
-      : data.programme;
+  const organization = asText(data.organizationName);
+  const subject = oneLine(
+    `New partnership request: ${asText(data.name)}${organization ? ` – ${organization}` : ""}`
+  );
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: CAREER_FROM_EMAIL,
-        to: CAREER_TO_EMAIL.split(",").map((address) => address.trim()),
-        reply_to: String(data.email).trim(),
-        subject: oneLine(`New application: ${data.fullName} – ${programme}`),
+        from,
+        to: to.split(",").map((address) => address.trim()),
+        reply_to: asText(data.email),
+        subject,
         html,
         text,
       }),
@@ -121,12 +117,12 @@ exports.handler = async (event) => {
 
     if (!response.ok) {
       console.error("Email provider error:", response.status, await response.text());
-      return json(502, { error: "Could not send application" });
+      return json(502, { error: "Could not send request" });
     }
 
     return json(200, { ok: true });
   } catch (error) {
     console.error("Send failed:", error);
-    return json(502, { error: "Could not send application" });
+    return json(502, { error: "Could not send request" });
   }
 };
