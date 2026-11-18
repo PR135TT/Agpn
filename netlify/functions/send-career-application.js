@@ -1,7 +1,6 @@
 // Netlify Function: emails a Career Pathways application.
 // Save as: netlify/functions/send-career-application.js
-// It is reachable at /api/send-career-application as long as your netlify.toml
-// already maps /api/* to /.netlify/functions/* (the sponsor form uses the same rule).
+// It is reachable at /.netlify/functions/send-career-application with no extra config.
 //
 // Environment variables (Netlify > Site configuration > Environment variables):
 //   RESEND_API_KEY       your Resend API key
@@ -71,10 +70,20 @@ exports.handler = async (event) => {
     return json(400, { error: "Invalid email address" });
   }
 
-  const { RESEND_API_KEY, CAREER_FROM_EMAIL, CAREER_TO_EMAIL } = process.env;
-  if (!RESEND_API_KEY || !CAREER_FROM_EMAIL || !CAREER_TO_EMAIL) {
-    console.error("Email environment variables are not set");
-    return json(500, { error: "Email is not configured" });
+  const RESEND_API_KEY = process.env.RESEND_API_KEY || process.env.RESEND_ACTUAL_API_KEY;
+  const { CAREER_FROM_EMAIL, CAREER_TO_EMAIL } = process.env;
+  const missingVars = [
+    ["RESEND_API_KEY", RESEND_API_KEY],
+    ["CAREER_FROM_EMAIL", CAREER_FROM_EMAIL],
+    ["CAREER_TO_EMAIL", CAREER_TO_EMAIL],
+  ]
+    .filter(([, value]) => !value)
+    .map(([name]) => name);
+
+  if (missingVars.length) {
+    console.error("Missing environment variables:", missingVars.join(", "));
+    // Names only, never values. Safe to keep; remove `missing` later if you prefer.
+    return json(500, { error: "Email is not configured", missing: missingVars });
   }
 
   const rows = FIELDS.filter(([, key]) => String(data[key] || "").trim()).map(
@@ -106,7 +115,7 @@ exports.handler = async (event) => {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${RESEND_ACTUAL_API_KEY}`,
+        Authorization: `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -120,8 +129,12 @@ exports.handler = async (event) => {
     });
 
     if (!response.ok) {
-      console.error("Email provider error:", response.status, await response.text());
-      return json(502, { error: "Could not send application" });
+      const providerMessage = await response.text();
+      console.error("Email provider error:", response.status, providerMessage);
+      return json(502, {
+        error: "Could not send application",
+        provider: { status: response.status, message: providerMessage.slice(0, 300) },
+      });
     }
 
     return json(200, { ok: true });
