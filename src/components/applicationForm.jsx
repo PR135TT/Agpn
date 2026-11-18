@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Serverless function that emails the application (same approach as the sponsor form).
 // File: netlify/functions/send-career-application.js
-const SUBMIT_URL = "/api/send-career-application";
+const SUBMIT_URL = "/.netlify/functions/send-career-application";
 
 const PROGRAMMES = [
   "B2B Sales & Business Development",
